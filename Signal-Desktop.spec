@@ -9,8 +9,8 @@
 %global __provides_exclude ^(lib.*\\.so.*)$
 
 Name:       Signal-Desktop
-Version:    1.32.0
-Release:    4%{?dist}
+Version:    1.32.3
+Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    GPLv3
 URL:        https://signal.org/
@@ -25,7 +25,7 @@ BuildRequires:  git
 %if 0%{?fedora}
 BuildRequires:  libxcrypt-compat
 %endif
-BuildRequires:  nodejs >= 12.4.0
+BuildRequires:  nodejs >= 12.13.0
 BuildRequires:  openssl-devel
 # Python >= 2.6.0 < 3.0.0
 BuildRequires:  python2
@@ -44,8 +44,8 @@ iOS.
 %prep
 %autosetup -p1 -n %{name}-%{version}%{?beta:-%{beta}}
 
-# Allow higher node versions
-sed -i 's/"node": "/&>=/' package.json
+# Allow higher minor node versions
+sed -i 's/"node": "/&^/' package.json
 
 %build
 yarn install
@@ -89,6 +89,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Thu Mar 26 2020 Matthias Andree <matthias.andree@gmx.de> - 1.32.3-1
+- Update to 1.32.3 final.
+
 * Thu Mar 05 2020 Simone Caronni <negativo17@gmail.com> - 1.32.0-4
 - Update to 1.32.0 final.
 
