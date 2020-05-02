@@ -10,7 +10,7 @@
 
 Name:       Signal-Desktop
 Version:    1.33.4
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Private messaging from your desktop
 License:    GPLv3
 URL:        https://signal.org/
@@ -89,6 +89,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Sat May 02 2020 Simone Caronni <negativo17@gmail.com> - 1.33.4-2
+- Do not build unrelated components, fixes build on CentOS/RHEL 7.
+
 * Fri May 01 2020 Simone Caronni <negativo17@gmail.com> - 1.33.4-1
 - Update to 1.33.4.
 
