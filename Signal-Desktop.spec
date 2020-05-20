@@ -10,7 +10,7 @@
 
 Name:       Signal-Desktop
 Version:    1.34.1
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Private messaging from your desktop
 License:    GPLv3
 URL:        https://signal.org/
@@ -59,8 +59,8 @@ yarn build-release --dir
 install -dm 755 %{buildroot}%{_libdir}/%{name}
 install -dm 755 %{buildroot}%{_bindir}
 
-# Remove unused Chromium components and unpacked Electron app
-rm -fr release/linux-unpacked/resources/app.asar.unpacked \
+# Remove unused Chromium components
+rm -fr \
   release/linux-unpacked/chrome_*.pak \
   release/linux-unpacked/chrome-sandbox \
   release/linux-unpacked/swiftshader
@@ -89,6 +89,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Wed May 20 2020 Simone Caronni <negativo17@gmail.com> - 1.34.1-2
+- Fix 1.34 requiring unpacked app as well.
+
 * Wed May 20 2020 Simone Caronni <negativo17@gmail.com> - 1.34.1-1
 - Update to 1.34.1.
 
