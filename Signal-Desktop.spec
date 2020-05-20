@@ -6,11 +6,12 @@
 
 # Remove bundled libraries from requirements/provides
 %global __requires_exclude ^(libffmpeg\\.so.*|libEGL\\.so.*|libGLESv2\\.so.*|libVkICD_mock_icd\\.so\\..*)$
+%global __requires_exclude_from ^%{_libdir}/%{name}/resources/app.asar.unpacked/.*$
 %global __provides_exclude ^(lib.*\\.so.*)$
 
 Name:       Signal-Desktop
 Version:    1.34.1
-Release:    2%{?dist}
+Release:    3%{?dist}
 Summary:    Private messaging from your desktop
 License:    GPLv3
 URL:        https://signal.org/
@@ -89,6 +90,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Wed May 20 2020 Simone Caronni <negativo17@gmail.com> - 1.34.1-3
+- And now filter out a lot of libraries lying around.
+
 * Wed May 20 2020 Simone Caronni <negativo17@gmail.com> - 1.34.1-2
 - Fix 1.34 requiring unpacked app as well.
 
