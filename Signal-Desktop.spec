@@ -10,7 +10,7 @@
 %global __provides_exclude ^(lib.*\\.so.*)$
 
 Name:       Signal-Desktop
-Version:    1.36.3
+Version:    1.37.2
 Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    GPLv3
@@ -90,6 +90,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Fri Oct 30 2020 Simone Caronni <negativo17@gmail.com> - 1.37.2-1
+- Update to 1.37.2.
+
 * Tue Oct 06 2020 Simone Caronni <negativo17@gmail.com> - 1.36.3-1
 - Update to 1.36.3.
 
