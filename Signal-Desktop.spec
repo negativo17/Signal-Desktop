@@ -2,7 +2,7 @@
 # External nodejs from https://rpm.nodesource.com/pub_12.x/ (requires Python 2)
 
 %global debug_package %{nil}
-#global beta beta.5
+%global beta beta.7
 
 # Remove bundled libraries from requirements/provides
 %global __requires_exclude ^(libffmpeg\\.so.*|libEGL\\.so.*|libGLESv2\\.so.*|libVkICD_mock_icd\\.so\\..*)$
@@ -10,7 +10,7 @@
 %global __provides_exclude ^(lib.*\\.so.*)$
 
 Name:       Signal-Desktop
-Version:    1.39.6
+Version:    1.40.0
 Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
@@ -23,6 +23,7 @@ Patch0:     %{name}-fix-build.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  git
+BuildRequires:  git-lfs
 %if 0%{?fedora}
 BuildRequires:  libxcrypt-compat
 %endif
@@ -39,6 +40,13 @@ Provides:   signal-desktop = %{version}-%{release}
 Obsoletes:  signal-desktop < %{version}-%{release}
 
 %description
+Millions of people use Signal every day for free and instantaneous communication
+anywhere in the world. Send and receive high-fidelity messages, participate in
+HD voice/video calls, and explore a growing set of new features that help you
+stay connected. Signal’s advanced privacy-preserving technology is always
+enabled, so you can focus on sharing the moments that matter with the people who
+matter to you.
+
 Signal Desktop is an Electron application that links with Signal on Android or
 iOS.
 
@@ -49,7 +57,7 @@ iOS.
 sed -i 's/"node": "/&^/' package.json
 
 %build
-yarn install
+yarn install #--verbose
 yarn generate --force
 # https://github.com/signalapp/Signal-Desktop/issues/2376#issuecomment-457899153
 yarn generate exec:build-protobuf exec:transpile concat copy:deps sass
@@ -66,7 +74,7 @@ rm -fr \
   release/linux-unpacked/chrome-sandbox \
   release/linux-unpacked/swiftshader
 
-cp -frv release/linux-unpacked/* %{buildroot}%{_libdir}/%{name}
+cp -fr release/linux-unpacked/* %{buildroot}%{_libdir}/%{name}
 
 ln -sf %{_libdir}/%{name}/signal-desktop %{buildroot}%{_bindir}/signal-desktop
 
@@ -90,6 +98,10 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Tue Feb 16 2021 Simone Caronni <negativo17@gmail.com> - 1.40.0-1
+- Update to 1.40.0-beta.7.
+- Fix license.
+
 * Tue Feb 16 2021 Simone Caronni <negativo17@gmail.com> - 1.39.6-1
 - Update to 1.39.6.
 

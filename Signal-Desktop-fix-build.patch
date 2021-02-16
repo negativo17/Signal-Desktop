@@ -1,7 +1,7 @@
-diff -Naur Signal-Desktop-1.37.2.old/Gruntfile.js Signal-Desktop-1.37.2/Gruntfile.js
---- Signal-Desktop-1.37.2.old/Gruntfile.js	2020-10-30 13:48:08.247898317 +0100
-+++ Signal-Desktop-1.37.2/Gruntfile.js	2020-10-30 13:48:14.466999564 +0100
-@@ -187,9 +187,7 @@
+diff -Naur Signal-Desktop-1.40.0-beta.7.old/Gruntfile.js Signal-Desktop-1.40.0-beta.7/Gruntfile.js
+--- Signal-Desktop-1.40.0-beta.7.old/Gruntfile.js	2021-02-16 14:35:03.082903046 +0100
++++ Signal-Desktop-1.40.0-beta.7/Gruntfile.js	2021-02-16 14:35:12.756064959 +0100
+@@ -190,9 +190,7 @@
    });
  
    grunt.registerTask('getExpireTime', () => {
@@ -12,26 +12,27 @@ diff -Naur Signal-Desktop-1.37.2.old/Gruntfile.js Signal-Desktop-1.37.2/Gruntfil
      const time = Date.parse(committed) + 1000 * 60 * 60 * 24 * 90;
      grunt.file.write(
        'config/local-production.json',
-diff -Naur Signal-Desktop-1.37.2.old/package.json Signal-Desktop-1.37.2/package.json
---- Signal-Desktop-1.37.2.old/package.json	2020-10-30 13:48:08.258898496 +0100
-+++ Signal-Desktop-1.37.2/package.json	2020-10-30 13:48:14.499000085 +0100
-@@ -61,7 +61,7 @@
+diff -Naur Signal-Desktop-1.40.0-beta.7.old/package.json Signal-Desktop-1.40.0-beta.7/package.json
+--- Signal-Desktop-1.40.0-beta.7.old/package.json	2021-02-16 14:35:03.091903197 +0100
++++ Signal-Desktop-1.40.0-beta.7/package.json	2021-02-16 14:55:38.583584495 +0100
+@@ -62,7 +62,7 @@
      "fs-xattr": "0.3.0"
    },
    "dependencies": {
--    "@journeyapps/sqlcipher": "https://github.com/scottnonnenberg-signal/node-sqlcipher.git#b10f232fac62ba7f8775c9e086bb5558fe7d948b",
-+    "@journeyapps/sqlcipher": "https://github.com/scaronni/node-sqlcipher.git#046c20a94ba27d8cf2e3e5d92d7cd2e88186724e",
+-    "@journeyapps/sqlcipher": "https://github.com/EvanHahn-signal/node-sqlcipher.git#16916949f0c010f6e6d3d5869b10a0ab813eae75",
++    "@journeyapps/sqlcipher": "https://github.com/scaronni/node-sqlcipher.git#72cb790e6cd21b1bf7957daaa494cecd4f6d8b8c",
      "@sindresorhus/is": "0.8.0",
      "abort-controller": "3.0.0",
      "array-move": "2.1.0",
-@@ -264,54 +264,6 @@
+@@ -270,56 +270,6 @@
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
 -    "mac": {
 -      "asarUnpack": [
 -        "**/*.node",
--        "node_modules/zkgroup/libzkgroup.*"
+-        "node_modules/zkgroup/libzkgroup.*",
+-        "node_modules/libsignal-client/build/*.node"
 -      ],
 -      "artifactName": "${name}-mac-${version}.${ext}",
 -      "category": "public.app-category.social-networking",
@@ -56,7 +57,8 @@ diff -Naur Signal-Desktop-1.37.2.old/package.json Signal-Desktop-1.37.2/package.
 -        "**/*.node",
 -        "node_modules/spellchecker/vendor/hunspell_dictionaries",
 -        "node_modules/sharp",
--        "node_modules/zkgroup/libzkgroup.*"
+-        "node_modules/zkgroup/libzkgroup.*",
+-        "node_modules/libsignal-client/build/*.node"
 -      ],
 -      "artifactName": "${name}-win-${version}.${ext}",
 -      "certificateSubjectName": "Signal (Quiet Riddle Ventures, LLC)",
@@ -79,9 +81,9 @@ diff -Naur Signal-Desktop-1.37.2.old/package.json Signal-Desktop-1.37.2/package.
      "linux": {
        "category": "Network;InstantMessaging;Chat",
        "desktop": {
-@@ -323,21 +275,8 @@
-         "node_modules/sharp",
-         "node_modules/zkgroup/libzkgroup.*"
+@@ -332,21 +282,8 @@
+         "node_modules/zkgroup/libzkgroup.*",
+         "node_modules/libsignal-client/build/*.node"
        ],
 -      "target": [
 -        "deb"
