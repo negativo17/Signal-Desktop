@@ -5,13 +5,12 @@
 %global beta beta.7
 
 # Remove bundled libraries from requirements/provides
-%global __requires_exclude ^(libffmpeg\\.so.*|libEGL\\.so.*|libGLESv2\\.so.*|libVkICD_mock_icd\\.so\\..*)$
-%global __requires_exclude_from ^%{_libdir}/%{name}/resources/app.asar.unpacked/.*$
-%global __provides_exclude ^(lib.*\\.so.*)$
+%global __requires_exclude ^(libffmpeg\\.so.*|libEGL\\.so.*|libGLESv2\\.so.*|libVkICD_mock_icd\\.so\\..*|libvips\\.so\\..*|libvips-cpp\\.so\\..*|libzkgroup\\.so)$
+%global __provides_exclude ^(libffmpeg\\.so.*|libEGL\\.so.*|libGLESv2\\.so.*|libVkICD_mock_icd\\.so\\..*|libvips\\.so\\..*|libvips-cpp\\.so\\..*|libzkgroup\\.so)$
 
 Name:       Signal-Desktop
 Version:    1.40.0
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
 URL:        https://signal.org/
@@ -98,6 +97,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Wed Feb 17 2021 Simone Caronni <negativo17@gmail.com> - 1.40.0-2
+- Make sure the correct required glibc version is exposed in the requirements.
+
 * Tue Feb 16 2021 Simone Caronni <negativo17@gmail.com> - 1.40.0-1
 - Update to 1.40.0-beta.7.
 - Fix license.
