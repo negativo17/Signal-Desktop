@@ -10,7 +10,7 @@
 
 Name:       Signal-Desktop
 Version:    1.40.0
-Release:    2%{?dist}
+Release:    3%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
 URL:        https://signal.org/
@@ -97,6 +97,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Thu Feb 18 2021 Simone Caronni <negativo17@gmail.com> - 1.40.0-3
+- Update to 1.40.0 final.
+
 * Wed Feb 17 2021 Simone Caronni <negativo17@gmail.com> - 1.40.0-2
 - Make sure the correct required glibc version is exposed in the requirements.
 
