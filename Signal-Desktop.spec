@@ -9,8 +9,8 @@
 %global __provides_exclude ^(libffmpeg\\.so.*|libEGL\\.so.*|libGLESv2\\.so.*|libVkICD_mock_icd\\.so\\..*|libvips\\.so\\..*|libvips-cpp\\.so\\..*|libzkgroup\\.so)$
 
 Name:       Signal-Desktop
-Version:    1.40.0
-Release:    4%{?dist}
+Version:    1.40.1
+Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
 URL:        https://signal.org/
@@ -97,6 +97,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Mon Mar 01 2021 Simone Caronni <negativo17@gmail.com> - 1.40.1-1
+- Update to 1.40.1.
+
 * Thu Feb 18 2021 Simone Caronni <negativo17@gmail.com> - 1.40.0-4
 - Fix typo.
 
