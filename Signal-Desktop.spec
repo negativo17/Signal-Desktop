@@ -1,5 +1,6 @@
 # External yarn from https://dl.yarnpkg.com/rpm/
 # External nodejs from https://rpm.nodesource.com/pub_12.x/ (requires Python 2)
+# Build with --enable-network
 
 %global debug_package %{nil}
 #global beta beta.7
@@ -9,7 +10,7 @@
 %global __provides_exclude ^(libffmpeg\\.so.*|libEGL\\.so.*|libGLESv2\\.so.*|libVkICD_mock_icd\\.so\\..*|libvips\\.so\\..*|libvips-cpp\\.so\\..*|libzkgroup\\.so)$
 
 Name:       Signal-Desktop
-Version:    1.40.1
+Version:    5.0.0
 Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
@@ -97,6 +98,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Thu Apr 22 2021 Simone Caronni <negativo17@gmail.com> - 5.0.0-1
+- Update to 5.0.0.
+
 * Mon Mar 01 2021 Simone Caronni <negativo17@gmail.com> - 1.40.1-1
 - Update to 1.40.1.
 

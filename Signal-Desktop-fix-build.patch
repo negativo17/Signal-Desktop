@@ -1,7 +1,7 @@
-diff -Naur Signal-Desktop-1.40.0-beta.7.old/Gruntfile.js Signal-Desktop-1.40.0-beta.7/Gruntfile.js
---- Signal-Desktop-1.40.0-beta.7.old/Gruntfile.js	2021-02-16 14:35:03.082903046 +0100
-+++ Signal-Desktop-1.40.0-beta.7/Gruntfile.js	2021-02-16 14:35:12.756064959 +0100
-@@ -190,9 +190,7 @@
+diff -Naur Signal-Desktop-5.0.0.old/Gruntfile.js Signal-Desktop-5.0.0/Gruntfile.js
+--- Signal-Desktop-5.0.0.old/Gruntfile.js	2021-04-22 10:43:55.117216164 +0200
++++ Signal-Desktop-5.0.0/Gruntfile.js	2021-04-22 10:44:24.581705641 +0200
+@@ -186,9 +186,7 @@
    });
  
    grunt.registerTask('getExpireTime', () => {
@@ -12,19 +12,24 @@ diff -Naur Signal-Desktop-1.40.0-beta.7.old/Gruntfile.js Signal-Desktop-1.40.0-b
      const time = Date.parse(committed) + 1000 * 60 * 60 * 24 * 90;
      grunt.file.write(
        'config/local-production.json',
-diff -Naur Signal-Desktop-1.40.0-beta.7.old/package.json Signal-Desktop-1.40.0-beta.7/package.json
---- Signal-Desktop-1.40.0-beta.7.old/package.json	2021-02-16 14:35:03.091903197 +0100
-+++ Signal-Desktop-1.40.0-beta.7/package.json	2021-02-16 14:55:38.583584495 +0100
-@@ -62,7 +62,7 @@
+diff -Naur Signal-Desktop-5.0.0.old/package.json Signal-Desktop-5.0.0/package.json
+--- Signal-Desktop-5.0.0.old/package.json	2021-04-22 10:43:55.483222192 +0200
++++ Signal-Desktop-5.0.0/package.json	2021-04-22 10:45:03.555355964 +0200
+@@ -64,7 +64,7 @@
      "fs-xattr": "0.3.0"
    },
    "dependencies": {
 -    "@journeyapps/sqlcipher": "https://github.com/EvanHahn-signal/node-sqlcipher.git#16916949f0c010f6e6d3d5869b10a0ab813eae75",
 +    "@journeyapps/sqlcipher": "https://github.com/scaronni/node-sqlcipher.git#72cb790e6cd21b1bf7957daaa494cecd4f6d8b8c",
      "@sindresorhus/is": "0.8.0",
-     "abort-controller": "3.0.0",
-     "array-move": "2.1.0",
-@@ -270,56 +270,6 @@
+     "@types/pino": "6.3.6",
+     "@types/pino-multi-stream": "5.1.0",
+@@ -277,60 +277,10 @@
+     "@storybook/react/@storybook/core/node-fetch": "2.6.1"
+   },
+   "engines": {
+-    "node": "12.18.3"
++    "node": "*"
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
@@ -81,7 +86,7 @@ diff -Naur Signal-Desktop-1.40.0-beta.7.old/package.json Signal-Desktop-1.40.0-b
      "linux": {
        "category": "Network;InstantMessaging;Chat",
        "desktop": {
-@@ -332,21 +282,8 @@
+@@ -343,20 +293,8 @@
          "node_modules/zkgroup/libzkgroup.*",
          "node_modules/libsignal-client/build/*.node"
        ],
@@ -93,7 +98,6 @@ diff -Naur Signal-Desktop-1.40.0-beta.7.old/package.json Signal-Desktop-1.40.0-b
 -    "deb": {
 -      "depends": [
 -        "libnotify4",
--        "libappindicator1",
 -        "libxtst6",
 -        "libnss3",
 -        "libasound2",
