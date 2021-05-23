@@ -1,20 +1,19 @@
-# External yarn from https://dl.yarnpkg.com/rpm/
-# External nodejs from https://rpm.nodesource.com/pub_12.x/ (requires Python 2)
-# Build with --enable-network
-
 %global debug_package %{nil}
 #global beta beta.7
 
 # Remove bundled libraries from requirements/provides
-%global __requires_exclude ^(libffmpeg\\.so.*|libEGL\\.so.*|libGLESv2\\.so.*|libVkICD_mock_icd\\.so\\..*|libvips\\.so\\..*|libvips-cpp\\.so\\..*|libzkgroup\\.so)$
-%global __provides_exclude ^(libffmpeg\\.so.*|libEGL\\.so.*|libGLESv2\\.so.*|libVkICD_mock_icd\\.so\\..*|libvips\\.so\\..*|libvips-cpp\\.so\\..*|libzkgroup\\.so)$
+%global __requires_exclude ^(libffmpeg\\.so.*|libEGL\\.so.*|libGLESv2\\.so.*|libvk_swiftshader\\.so\\.*|libvulkan\\.so\\.*)$
+%global __provides_exclude ^(libffmpeg\\.so.*|libEGL\\.so.*|libGLESv2\\.so.*|libvk_swiftshader\\.so\\.*|libvulkan\\.so\\.*)$
+%global __requires_exclude_from ^%{_libdir}/%{name}/resources/app.asar.unpacked/.*$
+%global __provides_exclude_from ^%{_libdir}/%{name}/resources/app.asar.unpacked/.*$
 
 Name:       Signal-Desktop
-Version:    5.0.0
+Version:    5.2.1
 Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
 URL:        https://signal.org/
+BuildArch:  aarch64 x86_64
 
 Source0:    https://github.com/signalapp/%{name}/archive/v%{version}%{?beta:-%{beta}}.tar.gz#/Signal-Desktop-%{version}%{?beta:-%{beta}}.tar.gz
 Source2:    %{name}.desktop
@@ -24,14 +23,10 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  git-lfs
-%if 0%{?fedora}
-BuildRequires:  libxcrypt-compat
-%endif
-BuildRequires:  nodejs >= 12.13.0
+BuildRequires:  npm >= 14
 BuildRequires:  openssl-devel
-# Python >= 2.6.0 < 3.0.0
-BuildRequires:  python2
-BuildRequires:  yarn
+BuildRequires:  python3
+BuildRequires:  yarnpkg
 
 Requires:   libappindicator-gtk3
 Requires:   libnotify
@@ -53,26 +48,30 @@ iOS.
 %prep
 %autosetup -p1 -n %{name}-%{version}%{?beta:-%{beta}}
 
-# Allow higher minor node versions
-sed -i 's/"node": "/&^/' package.json
-
 %build
-yarn install #--verbose
-yarn generate --force
-# https://github.com/signalapp/Signal-Desktop/issues/2376#issuecomment-457899153
-yarn generate exec:build-protobuf exec:transpile concat copy:deps sass
-yarn build-release --dir
+yarn install --ignore-engines
+yarn generate
+yarn build
+
+# Remove non-relevant binaries
+pushd release/linux-unpacked/
+
+rm -fr chrome_*.pak chrome-sandbox swiftshader
+find . -type f -depth -name "*.dylib" -delete
+find . -type d -depth -name "win32*" -exec rm -fr {} \;
+find . -type d -depth -name "darwin*" -exec rm -fr {} \;
+%ifarch x86_64
+find . -type d -depth -name "linux-arm64" -exec rm -fr {} \;
+%else
+find . -type d -depth -name "linux-x64" -exec rm -fr {} \;
+%endif
+
+popd
 
 %install
 # Main files
 install -dm 755 %{buildroot}%{_libdir}/%{name}
 install -dm 755 %{buildroot}%{_bindir}
-
-# Remove unused Chromium components
-rm -fr \
-  release/linux-unpacked/chrome_*.pak \
-  release/linux-unpacked/chrome-sandbox \
-  release/linux-unpacked/swiftshader
 
 cp -fr release/linux-unpacked/* %{buildroot}%{_libdir}/%{name}
 
@@ -98,6 +97,10 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Sun May 23 2021 Simone Caronni <negativo17@gmail.com> - 5.2.1-1
+- Update to 5.2.1.
+- Clean up SPEC file.
+
 * Thu Apr 22 2021 Simone Caronni <negativo17@gmail.com> - 5.0.0-1
 - Update to 5.0.0.
 

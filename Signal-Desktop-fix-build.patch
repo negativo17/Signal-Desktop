@@ -1,7 +1,7 @@
-diff -Naur Signal-Desktop-5.0.0.old/Gruntfile.js Signal-Desktop-5.0.0/Gruntfile.js
---- Signal-Desktop-5.0.0.old/Gruntfile.js	2021-04-22 10:43:55.117216164 +0200
-+++ Signal-Desktop-5.0.0/Gruntfile.js	2021-04-22 10:44:24.581705641 +0200
-@@ -186,9 +186,7 @@
+diff -Naur Signal-Desktop-5.2.1.old/Gruntfile.js Signal-Desktop-5.2.1/Gruntfile.js
+--- Signal-Desktop-5.2.1.old/Gruntfile.js	2021-05-24 09:08:50.910135845 +0200
++++ Signal-Desktop-5.2.1/Gruntfile.js	2021-05-24 09:09:01.404311055 +0200
+@@ -170,9 +170,7 @@
    });
  
    grunt.registerTask('getExpireTime', () => {
@@ -12,24 +12,15 @@ diff -Naur Signal-Desktop-5.0.0.old/Gruntfile.js Signal-Desktop-5.0.0/Gruntfile.
      const time = Date.parse(committed) + 1000 * 60 * 60 * 24 * 90;
      grunt.file.write(
        'config/local-production.json',
-diff -Naur Signal-Desktop-5.0.0.old/package.json Signal-Desktop-5.0.0/package.json
---- Signal-Desktop-5.0.0.old/package.json	2021-04-22 10:43:55.483222192 +0200
-+++ Signal-Desktop-5.0.0/package.json	2021-04-22 10:45:03.555355964 +0200
-@@ -64,7 +64,7 @@
-     "fs-xattr": "0.3.0"
-   },
-   "dependencies": {
--    "@journeyapps/sqlcipher": "https://github.com/EvanHahn-signal/node-sqlcipher.git#16916949f0c010f6e6d3d5869b10a0ab813eae75",
-+    "@journeyapps/sqlcipher": "https://github.com/scaronni/node-sqlcipher.git#72cb790e6cd21b1bf7957daaa494cecd4f6d8b8c",
-     "@sindresorhus/is": "0.8.0",
-     "@types/pino": "6.3.6",
-     "@types/pino-multi-stream": "5.1.0",
-@@ -277,60 +277,10 @@
+diff -Naur Signal-Desktop-5.2.1.old/package.json Signal-Desktop-5.2.1/package.json
+--- Signal-Desktop-5.2.1.old/package.json	2021-05-24 09:08:50.945136429 +0200
++++ Signal-Desktop-5.2.1/package.json	2021-05-24 10:03:57.078365108 +0200
+@@ -286,60 +286,10 @@
      "@storybook/react/@storybook/core/node-fetch": "2.6.1"
    },
    "engines": {
--    "node": "12.18.3"
-+    "node": "*"
+-    "node": "14.16.0"
++    "node": "^14.16.0"
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
@@ -86,7 +77,7 @@ diff -Naur Signal-Desktop-5.0.0.old/package.json Signal-Desktop-5.0.0/package.js
      "linux": {
        "category": "Network;InstantMessaging;Chat",
        "desktop": {
-@@ -343,20 +293,8 @@
+@@ -352,20 +302,8 @@
          "node_modules/zkgroup/libzkgroup.*",
          "node_modules/libsignal-client/build/*.node"
        ],
