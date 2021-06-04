@@ -1,6 +1,6 @@
-diff -Naur Signal-Desktop-5.2.1.old/Gruntfile.js Signal-Desktop-5.2.1/Gruntfile.js
---- Signal-Desktop-5.2.1.old/Gruntfile.js	2021-05-24 09:08:50.910135845 +0200
-+++ Signal-Desktop-5.2.1/Gruntfile.js	2021-05-24 09:09:01.404311055 +0200
+diff -Naur Signal-Desktop-5.3.0.old/Gruntfile.js Signal-Desktop-5.3.0/Gruntfile.js
+--- Signal-Desktop-5.3.0.old/Gruntfile.js	2021-06-04 10:03:26.207075210 +0200
++++ Signal-Desktop-5.3.0/Gruntfile.js	2021-06-04 10:03:51.928510870 +0200
 @@ -170,9 +170,7 @@
    });
  
@@ -12,11 +12,11 @@ diff -Naur Signal-Desktop-5.2.1.old/Gruntfile.js Signal-Desktop-5.2.1/Gruntfile.
      const time = Date.parse(committed) + 1000 * 60 * 60 * 24 * 90;
      grunt.file.write(
        'config/local-production.json',
-diff -Naur Signal-Desktop-5.2.1.old/package.json Signal-Desktop-5.2.1/package.json
---- Signal-Desktop-5.2.1.old/package.json	2021-05-24 09:08:50.945136429 +0200
-+++ Signal-Desktop-5.2.1/package.json	2021-05-24 10:03:57.078365108 +0200
-@@ -286,60 +286,10 @@
-     "@storybook/react/@storybook/core/node-fetch": "2.6.1"
+diff -Naur Signal-Desktop-5.3.0.old/package.json Signal-Desktop-5.3.0/package.json
+--- Signal-Desktop-5.3.0.old/package.json	2021-06-04 10:03:26.210075261 +0200
++++ Signal-Desktop-5.3.0/package.json	2021-06-04 10:04:42.083360371 +0200
+@@ -295,61 +295,10 @@
+     "zkgroup/ref-array-napi/ref-napi/node-addon-api": "2.0.1"
    },
    "engines": {
 -    "node": "14.16.0"
@@ -28,7 +28,8 @@ diff -Naur Signal-Desktop-5.2.1.old/package.json Signal-Desktop-5.2.1/package.js
 -      "asarUnpack": [
 -        "**/*.node",
 -        "node_modules/zkgroup/libzkgroup.*",
--        "node_modules/libsignal-client/build/*.node"
+-        "node_modules/@signalapp/signal-client/build/*.node",
+-        "node_modules/mac-screen-capture-permissions/build/Release/*.node"
 -      ],
 -      "artifactName": "${name}-mac-${version}.${ext}",
 -      "category": "public.app-category.social-networking",
@@ -54,7 +55,7 @@ diff -Naur Signal-Desktop-5.2.1.old/package.json Signal-Desktop-5.2.1/package.js
 -        "node_modules/spellchecker/vendor/hunspell_dictionaries",
 -        "node_modules/sharp",
 -        "node_modules/zkgroup/libzkgroup.*",
--        "node_modules/libsignal-client/build/*.node"
+-        "node_modules/@signalapp/signal-client/build/*.node"
 -      ],
 -      "artifactName": "${name}-win-${version}.${ext}",
 -      "certificateSubjectName": "Signal (Quiet Riddle Ventures, LLC)",
@@ -77,9 +78,9 @@ diff -Naur Signal-Desktop-5.2.1.old/package.json Signal-Desktop-5.2.1/package.js
      "linux": {
        "category": "Network;InstantMessaging;Chat",
        "desktop": {
-@@ -352,20 +302,8 @@
+@@ -362,20 +311,8 @@
          "node_modules/zkgroup/libzkgroup.*",
-         "node_modules/libsignal-client/build/*.node"
+         "node_modules/@signalapp/signal-client/build/*.node"
        ],
 -      "target": [
 -        "deb"
