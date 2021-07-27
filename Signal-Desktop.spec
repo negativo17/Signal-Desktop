@@ -2,13 +2,13 @@
 #global beta beta.7
 
 # Remove bundled libraries from requirements/provides
-%global __requires_exclude ^(libffmpeg\\.so.*|libEGL\\.so.*|libGLESv2\\.so.*|libvk_swiftshader\\.so\\.*|libvulkan\\.so\\.*)$
-%global __provides_exclude ^(libffmpeg\\.so.*|libEGL\\.so.*|libGLESv2\\.so.*|libvk_swiftshader\\.so\\.*|libvulkan\\.so\\.*)$
+%global __requires_exclude ^(libffmpeg\\.so.*|libEGL\\.so.*|libGLESv2\\.so.*|libvk_swiftshader\\.so.*|libvulkan\\.so.*)$
+%global __provides_exclude ^(libffmpeg\\.so.*|libEGL\\.so.*|libGLESv2\\.so.*|libvk_swiftshader\\.so.*|libvulkan\\.so.*)$
 %global __requires_exclude_from ^%{_libdir}/%{name}/resources/app.asar.unpacked/.*$
 %global __provides_exclude_from ^%{_libdir}/%{name}/resources/app.asar.unpacked/.*$
 
 Name:       Signal-Desktop
-Version:    5.6.2
+Version:    5.10.0
 Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
@@ -97,6 +97,10 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Tue Jul 27 2021 Simone Caronni <negativo17@gmail.com> - 5.10.0-1
+- Update to 5.10.0.
+- Fix library filter.
+
 * Sat Jun 26 2021 Simone Caronni <negativo17@gmail.com> - 5.6.2-1
 - Update to 5.6.2.
 
