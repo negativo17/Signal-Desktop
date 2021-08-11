@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-#global beta beta.7
+%global beta beta.2
 
 # Remove bundled libraries from requirements/provides
 %global __requires_exclude ^(libffmpeg\\.so.*|libEGL\\.so.*|libGLESv2\\.so.*|libvk_swiftshader\\.so.*|libvulkan\\.so.*)$
@@ -8,7 +8,7 @@
 %global __provides_exclude_from ^%{_libdir}/%{name}/resources/app.asar.unpacked/.*$
 
 Name:       Signal-Desktop
-Version:    5.12.2
+Version:    5.13.0
 Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
@@ -97,6 +97,10 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Wed Aug 11 2021 Simone Caronni <negativo17@gmail.com> - 5.13.0-1
+- Update to 5.13.0-beta.2 due to issues with releases and versions in the
+  5.12.x branch (release 5.12.2 contained 5.12.0-beta.1 code).
+
 * Fri Aug 06 2021 Simone Caronni <negativo17@gmail.com> - 5.12.2-1
 - Update to 5.12.2.
 
