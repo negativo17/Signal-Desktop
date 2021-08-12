@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global beta beta.2
+#global beta beta.2
 
 # Remove bundled libraries from requirements/provides
 %global __requires_exclude ^(libffmpeg\\.so.*|libEGL\\.so.*|libGLESv2\\.so.*|libvk_swiftshader\\.so.*|libvulkan\\.so.*)$
@@ -9,7 +9,7 @@
 
 Name:       Signal-Desktop
 Version:    5.13.0
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
 URL:        https://signal.org/
@@ -97,6 +97,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Thu Aug 12 2021 Simone Caronni <negativo17@gmail.com> - 5.13.0-2
+- Update to 5.13.0 final.
+
 * Wed Aug 11 2021 Simone Caronni <negativo17@gmail.com> - 5.13.0-1
 - Update to 5.13.0-beta.2 due to issues with releases and versions in the
   5.12.x branch (release 5.12.2 contained 5.12.0-beta.1 code).
