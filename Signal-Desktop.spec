@@ -8,7 +8,7 @@
 %global __provides_exclude_from ^%{_libdir}/%{name}/resources/app.asar.unpacked/.*$
 
 Name:       Signal-Desktop
-Version:    5.13.1
+Version:    5.14.0
 Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
@@ -97,6 +97,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Thu Aug 19 2021 Simone Caronni <negativo17@gmail.com> - 5.14.0-1
+- Update to 5.14.0.
+
 * Mon Aug 16 2021 Simone Caronni <negativo17@gmail.com> - 5.13.1-1
 - Update to 5.13.1.
 

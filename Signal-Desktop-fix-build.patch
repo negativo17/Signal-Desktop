@@ -1,6 +1,6 @@
-diff -Naur Signal-Desktop-5.10.0.old/Gruntfile.js Signal-Desktop-5.10.0/Gruntfile.js
---- Signal-Desktop-5.10.0.old/Gruntfile.js	2021-07-27 16:56:21.161637502 +0200
-+++ Signal-Desktop-5.10.0/Gruntfile.js	2021-07-27 16:56:31.498819567 +0200
+diff -Naur Signal-Desktop-5.14.0.old/Gruntfile.js Signal-Desktop-5.14.0/Gruntfile.js
+--- Signal-Desktop-5.14.0.old/Gruntfile.js	2021-08-19 09:43:27.594421879 +0200
++++ Signal-Desktop-5.14.0/Gruntfile.js	2021-08-19 09:43:37.665601850 +0200
 @@ -155,9 +155,7 @@
    });
  
@@ -12,10 +12,10 @@ diff -Naur Signal-Desktop-5.10.0.old/Gruntfile.js Signal-Desktop-5.10.0/Gruntfil
      const time = Date.parse(committed) + 1000 * 60 * 60 * 24 * 90;
      grunt.file.write(
        'config/local-production.json',
-diff -Naur Signal-Desktop-5.10.0.old/package.json Signal-Desktop-5.10.0/package.json
---- Signal-Desktop-5.10.0.old/package.json	2021-07-27 16:56:21.173637714 +0200
-+++ Signal-Desktop-5.10.0/package.json	2021-07-27 16:56:31.499819585 +0200
-@@ -292,61 +292,10 @@
+diff -Naur Signal-Desktop-5.14.0.old/package.json Signal-Desktop-5.14.0/package.json
+--- Signal-Desktop-5.14.0.old/package.json	2021-08-19 09:43:27.628422486 +0200
++++ Signal-Desktop-5.14.0/package.json	2021-08-19 09:44:27.882499213 +0200
+@@ -295,64 +295,10 @@
      "sharp/color/color-string": "1.5.5"
    },
    "engines": {
@@ -58,9 +58,12 @@ diff -Naur Signal-Desktop-5.10.0.old/package.json Signal-Desktop-5.10.0/package.
 -        "node_modules/@signalapp/signal-client/build/*.node"
 -      ],
 -      "artifactName": "${name}-win-${version}.${ext}",
--      "certificateSubjectName": "Signal (Quiet Riddle Ventures, LLC)",
--      "certificateSha1": "77B2AA4421E5F377454B8B91E573746592D1543D",
--      "publisherName": "Signal (Quiet Riddle Ventures, LLC)",
+-      "certificateSubjectName": "Signal Messenger, LLC",
+-      "certificateSha1": "8C9A0B5C852EC703D83EF7BFBCEB54B796073759",
+-      "signingHashAlgorithms": [
+-        "sha256"
+-      ],
+-      "publisherName": "Signal Messenger, LLC",
 -      "icon": "build/icons/win/icon.ico",
 -      "publish": [
 -        {
@@ -78,7 +81,7 @@ diff -Naur Signal-Desktop-5.10.0.old/package.json Signal-Desktop-5.10.0/package.
      "linux": {
        "category": "Network;InstantMessaging;Chat",
        "desktop": {
-@@ -359,20 +308,8 @@
+@@ -365,20 +311,8 @@
          "node_modules/zkgroup/libzkgroup.*",
          "node_modules/@signalapp/signal-client/build/*.node"
        ],
