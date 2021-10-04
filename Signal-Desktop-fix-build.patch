@@ -1,7 +1,7 @@
-diff -Naur Signal-Desktop-5.14.0.old/Gruntfile.js Signal-Desktop-5.14.0/Gruntfile.js
---- Signal-Desktop-5.14.0.old/Gruntfile.js	2021-08-19 09:43:27.594421879 +0200
-+++ Signal-Desktop-5.14.0/Gruntfile.js	2021-08-19 09:43:37.665601850 +0200
-@@ -155,9 +155,7 @@
+diff -Naur Signal-Desktop-5.18.0.old/Gruntfile.js Signal-Desktop-5.18.0/Gruntfile.js
+--- Signal-Desktop-5.18.0.old/Gruntfile.js	2021-10-04 13:44:21.594172782 +0200
++++ Signal-Desktop-5.18.0/Gruntfile.js	2021-10-04 13:45:01.343891490 +0200
+@@ -171,9 +171,7 @@
    });
  
    grunt.registerTask('getExpireTime', () => {
@@ -9,13 +9,13 @@ diff -Naur Signal-Desktop-5.14.0.old/Gruntfile.js Signal-Desktop-5.14.0/Gruntfil
 -    const gitinfo = grunt.config.get('gitinfo');
 -    const committed = gitinfo.local.branch.current.lastCommitTime;
 +    const committed = parseInt(process.env.SOURCE_DATE_EPOCH, 10) * 1000;
-     const time = Date.parse(committed) + 1000 * 60 * 60 * 24 * 90;
+     const buildCreation = Date.parse(committed);
+     const buildExpiration = buildCreation + 1000 * 60 * 60 * 24 * 90;
      grunt.file.write(
-       'config/local-production.json',
-diff -Naur Signal-Desktop-5.14.0.old/package.json Signal-Desktop-5.14.0/package.json
---- Signal-Desktop-5.14.0.old/package.json	2021-08-19 09:43:27.628422486 +0200
-+++ Signal-Desktop-5.14.0/package.json	2021-08-19 09:44:27.882499213 +0200
-@@ -295,64 +295,10 @@
+diff -Naur Signal-Desktop-5.18.0.old/package.json Signal-Desktop-5.18.0/package.json
+--- Signal-Desktop-5.18.0.old/package.json	2021-10-04 13:44:21.732175278 +0200
++++ Signal-Desktop-5.18.0/package.json	2021-10-04 13:44:31.121345041 +0200
+@@ -297,64 +297,10 @@
      "sharp/color/color-string": "1.5.5"
    },
    "engines": {
@@ -81,7 +81,7 @@ diff -Naur Signal-Desktop-5.14.0.old/package.json Signal-Desktop-5.14.0/package.
      "linux": {
        "category": "Network;InstantMessaging;Chat",
        "desktop": {
-@@ -365,20 +311,8 @@
+@@ -367,20 +313,8 @@
          "node_modules/zkgroup/libzkgroup.*",
          "node_modules/@signalapp/signal-client/build/*.node"
        ],
