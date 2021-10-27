@@ -7,3 +7,4 @@ Icon=Signal-Desktop
 Exec=signal-desktop --use-tray-icon --no-sandbox
 Categories=Network
 StartupNotify=true
+MimeType=x-scheme-handler/sgnl;
