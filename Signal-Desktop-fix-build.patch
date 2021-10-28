@@ -1,6 +1,6 @@
-diff -Naur Signal-Desktop-5.21.0.old/Gruntfile.js Signal-Desktop-5.21.0/Gruntfile.js
---- Signal-Desktop-5.21.0.old/Gruntfile.js	2021-10-26 13:29:24.682768753 +0200
-+++ Signal-Desktop-5.21.0/Gruntfile.js	2021-10-27 13:37:17.769764653 +0200
+diff -Naur Signal-Desktop-5.22.0.old/Gruntfile.js Signal-Desktop-5.22.0/Gruntfile.js
+--- Signal-Desktop-5.22.0.old/Gruntfile.js	2021-10-28 09:41:41.444494664 +0200
++++ Signal-Desktop-5.22.0/Gruntfile.js	2021-10-28 09:41:49.999641793 +0200
 @@ -171,9 +171,7 @@
    });
  
@@ -12,10 +12,10 @@ diff -Naur Signal-Desktop-5.21.0.old/Gruntfile.js Signal-Desktop-5.21.0/Gruntfil
      const buildCreation = Date.parse(committed);
      const buildExpiration = buildCreation + 1000 * 60 * 60 * 24 * 90;
      grunt.file.write(
-diff -Naur Signal-Desktop-5.21.0.old/package.json Signal-Desktop-5.21.0/package.json
---- Signal-Desktop-5.21.0.old/package.json	2021-10-26 13:29:24.682768753 +0200
-+++ Signal-Desktop-5.21.0/package.json	2021-10-27 13:37:17.770764671 +0200
-@@ -298,64 +298,10 @@
+diff -Naur Signal-Desktop-5.22.0.old/package.json Signal-Desktop-5.22.0/package.json
+--- Signal-Desktop-5.22.0.old/package.json	2021-10-28 09:41:41.444494664 +0200
++++ Signal-Desktop-5.22.0/package.json	2021-10-28 09:41:50.000641811 +0200
+@@ -300,64 +300,10 @@
      "sharp/color/color-string": "1.5.5"
    },
    "engines": {
@@ -81,7 +81,7 @@ diff -Naur Signal-Desktop-5.21.0.old/package.json Signal-Desktop-5.21.0/package.
      "linux": {
        "category": "Network;InstantMessaging;Chat",
        "desktop": {
-@@ -368,20 +314,8 @@
+@@ -370,20 +316,8 @@
          "node_modules/zkgroup/libzkgroup.*",
          "node_modules/@signalapp/signal-client/build/*.node"
        ],
