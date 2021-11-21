@@ -9,13 +9,14 @@
 
 Name:       Signal-Desktop
 Version:    5.24.0
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
 URL:        https://signal.org/
 BuildArch:  aarch64 x86_64
 
 Source0:    https://github.com/signalapp/%{name}/archive/v%{version}%{?beta:-%{beta}}.tar.gz#/Signal-Desktop-%{version}%{?beta:-%{beta}}.tar.gz
+Source1:    %{name}-wrapper
 Source2:    %{name}.desktop
 Patch0:     %{name}-fix-build.patch
 
@@ -75,13 +76,17 @@ install -dm 755 %{buildroot}%{_bindir}
 
 cp -fr release/linux-unpacked/* %{buildroot}%{_libdir}/%{name}
 
-ln -sf %{_libdir}/%{name}/signal-desktop %{buildroot}%{_bindir}/signal-desktop
-
 # Icons
 for size in 16 24 32 48 64 128 256 512 1024; do
   install -p -D -m 644 build/icons/png/${size}x${size}.png \
     %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/%{name}.png
 done
+
+# Wrapper script
+mkdir -p %{buildroot}%{_bindir}
+cat %{SOURCE1} | sed -e 's|INSTALL_DIR|%{_libdir}/%{name}|g' \
+    > %{buildroot}%{_bindir}/signal-desktop
+chmod +x %{buildroot}%{_bindir}/signal-desktop
 
 # Desktop file
 install -m 0644 -D -p %{SOURCE2} %{buildroot}%{_datadir}/applications/%{name}.desktop
@@ -97,6 +102,10 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Sun Nov 21 2021 Simone Caronni <negativo17@gmail.com> - 5.24.0-2
+- Add wrapper script, fixes crash on Intel GPUs.
+- Trim changelog.
+
 * Thu Nov 18 2021 Simone Caronni <negativo17@gmail.com> - 5.24.0-1
 - Update to 5.24.0.
 
@@ -177,131 +186,3 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 * Sun May 23 2021 Simone Caronni <negativo17@gmail.com> - 5.2.1-1
 - Update to 5.2.1.
 - Clean up SPEC file.
-
-* Thu Apr 22 2021 Simone Caronni <negativo17@gmail.com> - 5.0.0-1
-- Update to 5.0.0.
-
-* Mon Mar 01 2021 Simone Caronni <negativo17@gmail.com> - 1.40.1-1
-- Update to 1.40.1.
-
-* Thu Feb 18 2021 Simone Caronni <negativo17@gmail.com> - 1.40.0-4
-- Fix typo.
-
-* Thu Feb 18 2021 Simone Caronni <negativo17@gmail.com> - 1.40.0-3
-- Update to 1.40.0 final.
-
-* Wed Feb 17 2021 Simone Caronni <negativo17@gmail.com> - 1.40.0-2
-- Make sure the correct required glibc version is exposed in the requirements.
-
-* Tue Feb 16 2021 Simone Caronni <negativo17@gmail.com> - 1.40.0-1
-- Update to 1.40.0-beta.7.
-- Fix license.
-
-* Tue Feb 16 2021 Simone Caronni <negativo17@gmail.com> - 1.39.6-1
-- Update to 1.39.6.
-
-* Thu Jan 14 2021 Simone Caronni <negativo17@gmail.com> - 1.39.5-1
-- Update to 1.39.5.
-
-* Wed Jan  6 2021 Simone Caronni <negativo17@gmail.com> - 1.39.4-1
-- Update to 1.39.4.
-
-* Thu Dec 17 2020 Simone Caronni <negativo17@gmail.com> - 1.39.3-1
-- Update to 1.39.3.
-
-* Fri Dec 04 2020 Simone Caronni <negativo17@gmail.com> - 1.38.2-1
-- Update to 1.38.2.
-
-* Fri Oct 30 2020 Simone Caronni <negativo17@gmail.com> - 1.37.2-1
-- Update to 1.37.2.
-
-* Tue Oct 06 2020 Simone Caronni <negativo17@gmail.com> - 1.36.3-1
-- Update to 1.36.3.
-
-* Sun Aug 16 2020 Simone Caronni <negativo17@gmail.com> - 1.34.5-1
-- Update to 1.34.5.
-
-* Tue Jul 21 2020 Simone Caronni <negativo17@gmail.com> - 1.34.4-1
-- Update to 1.34.4.
-
-* Thu Jul 09 2020 Simone Caronni <negativo17@gmail.com> - 1.34.3-1
-- Update to 1.34.3.
-
-* Mon Jun 22 2020 Simone Caronni <negativo17@gmail.com> - 1.34.2-1
-- Update to 1.34.2.
-
-* Wed May 20 2020 Simone Caronni <negativo17@gmail.com> - 1.34.1-3
-- And now filter out a lot of libraries lying around.
-
-* Wed May 20 2020 Simone Caronni <negativo17@gmail.com> - 1.34.1-2
-- Fix 1.34 requiring unpacked app as well.
-
-* Wed May 20 2020 Simone Caronni <negativo17@gmail.com> - 1.34.1-1
-- Update to 1.34.1.
-
-* Sat May 02 2020 Simone Caronni <negativo17@gmail.com> - 1.33.4-2
-- Do not build unrelated components, fixes build on CentOS/RHEL 7.
-
-* Fri May 01 2020 Simone Caronni <negativo17@gmail.com> - 1.33.4-1
-- Update to 1.33.4.
-
-* Fri Apr 24 2020 Simone Caronni <negativo17@gmail.com> - 1.33.3-1
-- Update to 1.33.3.
-
-* Tue Apr 14 2020 Simone Caronni <negativo17@gmail.com> - 1.33.0-1
-- Update to 1.33.0.
-
-* Thu Mar 26 2020 Matthias Andree <matthias.andree@gmx.de> - 1.32.3-1
-- Update to 1.32.3 final.
-
-* Thu Mar 05 2020 Simone Caronni <negativo17@gmail.com> - 1.32.0-4
-- Update to 1.32.0 final.
-
-* Tue Mar 03 2020 Simone Caronni <negativo17@gmail.com> - 1.32.0-3
-- Update to 1.32.0-beta.5.
-
-* Thu Feb 27 2020 Simone Caronni <negativo17@gmail.com> - 1.32.0-2
-- Update to 1.32.0-beta.4.
-
-* Thu Feb 20 2020 Simone Caronni <negativo17@gmail.com> - 1.32.0-1
-- Update to 1.32.0 beta 2.
-
-* Wed Feb 12 2020 Simone Caronni <negativo17@gmail.com> - 1.31.0-1
-- Update to 1.31.0.
-
-* Thu Feb 06 2020 Simone Caronni <negativo17@gmail.com> - 1.30.1-1
-- Update to 1.30.1.
-- Use a patched node-sqlcipher 4.x repository (Python, linked OpenSSL).
-- Remove unused Electron binaries (sandbox, 3D swiftshader, Electron icons).
-
-* Mon Jan 20 2020 Simone Caronni <negativo17@gmail.com> - 1.29.6-1
-- Update to 1.29.6.
-- Do not use python-unversioned-command anymore.
-
-* Thu Jan 16 2020 Simone Caronni <negativo17@gmail.com> - 1.29.4-1
-- Update to 1.29.4.
-
-* Mon Dec 30 2019 Simone Caronni <negativo17@gmail.com> - 1.29.3-1
-- Update to 1.29.3.
-
-* Mon Dec 09 2019 Simone Caronni <negativo17@gmail.com> - 1.29.0-1
-- Update to 1.29.0.
-
-* Sat Nov 16 2019 Simone Caronni <negativo17@gmail.com> - 1.28.0-1
-- Update to 1.28.0.
-
-* Fri Nov 08 2019 Simone Caronni <negativo17@gmail.com> - 1.27.4-1
-- Update to 1.27.4.
-- Switch to external yarn/npm stuff.
-
-* Mon Oct 07 2019 Simone Caronni <negativo17@gmail.com> - 1.27.3-1
-- Update to 1.27.3.
-
-* Thu Sep 12 2019 Simone Caronni <negativo17@gmail.com> - 1.27.2-1
-- Update to 1.27.2.
-
-* Mon Aug 19 2019 Simone Caronni <negativo17@gmail.com> - 1.26.2-1
-- Update to 1.26.2.
-
-* Wed Jul 24 2019 Simone Caronni <negativo17@gmail.com> - 1.25.3-2
-- First build based on ArchLinux AUR.

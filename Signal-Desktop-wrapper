@@ -1,0 +1,9 @@
+#!/usr/bin/sh
+# Wrapper script for Signal.
+
+# The signal-desktop binary has a RUNPATH of its origin folder.
+# So remove the RUNPATH from the binary, put all the libraries in its private
+# folder and make sure that only the authy binary can access them.
+
+export LD_LIBRARY_PATH="INSTALL_DIR${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+exec INSTALL_DIR/signal-desktop --disable-gpu --disable-seccomp-filter-sandbox "$@"
