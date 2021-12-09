@@ -1,6 +1,6 @@
-diff -Naur Signal-Desktop-5.23.0.old/Gruntfile.js Signal-Desktop-5.23.0/Gruntfile.js
---- Signal-Desktop-5.23.0.old/Gruntfile.js	2021-11-04 15:36:52.259616141 +0100
-+++ Signal-Desktop-5.23.0/Gruntfile.js	2021-11-04 15:37:02.499789964 +0100
+diff -Naur Signal-Desktop-5.25.1.old/Gruntfile.js Signal-Desktop-5.25.1/Gruntfile.js
+--- Signal-Desktop-5.25.1.old/Gruntfile.js	2021-12-09 13:42:06.750787344 +0100
++++ Signal-Desktop-5.25.1/Gruntfile.js	2021-12-09 13:42:14.607923547 +0100
 @@ -171,9 +171,7 @@
    });
  
@@ -12,24 +12,21 @@ diff -Naur Signal-Desktop-5.23.0.old/Gruntfile.js Signal-Desktop-5.23.0/Gruntfil
      const buildCreation = Date.parse(committed);
      const buildExpiration = buildCreation + 1000 * 60 * 60 * 24 * 90;
      grunt.file.write(
-diff -Naur Signal-Desktop-5.23.0.old/package.json Signal-Desktop-5.23.0/package.json
---- Signal-Desktop-5.23.0.old/package.json	2021-11-04 15:36:52.272616362 +0100
-+++ Signal-Desktop-5.23.0/package.json	2021-11-04 15:37:02.546790762 +0100
-@@ -299,64 +299,10 @@
+diff -Naur Signal-Desktop-5.25.1.old/package.json Signal-Desktop-5.25.1/package.json
+--- Signal-Desktop-5.25.1.old/package.json	2021-12-09 13:42:06.750787344 +0100
++++ Signal-Desktop-5.25.1/package.json	2021-12-09 13:43:00.973727297 +0100
+@@ -296,59 +296,10 @@
      "sharp/color/color-string": "1.5.5"
    },
    "engines": {
--    "node": "14.16.0"
-+    "node": "^14.16.0"
+-    "node": "16.5.0"
++    "node": "^16.5.0"
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
 -    "mac": {
 -      "asarUnpack": [
--        "**/*.node",
--        "node_modules/zkgroup/libzkgroup.*",
--        "node_modules/@signalapp/signal-client/build/*.node",
--        "node_modules/mac-screen-capture-permissions/build/Release/*.node"
+-        "**/*.node"
 -      ],
 -      "artifactName": "${name}-mac-${version}.${ext}",
 -      "category": "public.app-category.social-networking",
@@ -53,9 +50,7 @@ diff -Naur Signal-Desktop-5.23.0.old/package.json Signal-Desktop-5.23.0/package.
 -      "asarUnpack": [
 -        "**/*.node",
 -        "node_modules/spellchecker/vendor/hunspell_dictionaries",
--        "node_modules/sharp",
--        "node_modules/zkgroup/libzkgroup.*",
--        "node_modules/@signalapp/signal-client/build/*.node"
+-        "node_modules/sharp"
 -      ],
 -      "artifactName": "${name}-win-${version}.${ext}",
 -      "certificateSubjectName": "Signal Messenger, LLC",
@@ -81,9 +76,9 @@ diff -Naur Signal-Desktop-5.23.0.old/package.json Signal-Desktop-5.23.0/package.
      "linux": {
        "category": "Network;InstantMessaging;Chat",
        "desktop": {
-@@ -369,20 +315,8 @@
-         "node_modules/zkgroup/libzkgroup.*",
-         "node_modules/@signalapp/signal-client/build/*.node"
+@@ -359,20 +310,8 @@
+         "node_modules/spellchecker/vendor/hunspell_dictionaries",
+         "node_modules/sharp"
        ],
 -      "target": [
 -        "deb"

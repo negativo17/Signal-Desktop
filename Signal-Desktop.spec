@@ -8,8 +8,8 @@
 %global __provides_exclude_from ^%{_libdir}/%{name}/resources/app.asar.unpacked/.*$
 
 Name:       Signal-Desktop
-Version:    5.24.0
-Release:    2%{?dist}
+Version:    5.25.1
+Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
 URL:        https://signal.org/
@@ -24,7 +24,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  git-lfs
-BuildRequires:  npm >= 14
+BuildRequires:  npm >= 16
 BuildRequires:  openssl-devel
 BuildRequires:  python3
 BuildRequires:  yarnpkg
@@ -102,6 +102,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Thu Dec 09 2021 Simone Caronni <negativo17@gmail.com> - 5.25.1-1
+- Update to 5.25.1.
+
 * Sun Nov 21 2021 Simone Caronni <negativo17@gmail.com> - 5.24.0-2
 - Add wrapper script, fixes crash on Intel GPUs.
 - Trim changelog.
