@@ -46,6 +46,9 @@ matter to you.
 Signal Desktop is an Electron application that links with Signal on Android or
 iOS.
 
+# Build id links are sometimes in conflict with other RPMs.
+%define _build_id_links none
+
 %prep
 %autosetup -p1 -n %{name}-%{version}%{?beta:-%{beta}}
 
