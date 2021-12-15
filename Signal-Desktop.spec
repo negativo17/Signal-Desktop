@@ -11,8 +11,8 @@
 #global beta beta.2
 
 Name:       Signal-Desktop
-Version:    5.25.1
-Release:    2%{?dist}
+Version:    5.26.0
+Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
 URL:        https://signal.org/
@@ -105,6 +105,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Wed Dec 15 2021 Simone Caronni <negativo17@gmail.com> - 5.26.0-1
+- Update to 5.26.0.
+
 * Mon Dec 13 2021 Simone Caronni <negativo17@gmail.com> - 5.25.1-2
 - Fix build id links in conflict with other RPMs.
 
