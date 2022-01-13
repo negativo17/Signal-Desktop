@@ -1,26 +1,12 @@
-diff -Naur Signal-Desktop-5.26.0.old/Gruntfile.js Signal-Desktop-5.26.0/Gruntfile.js
---- Signal-Desktop-5.26.0.old/Gruntfile.js	2021-12-15 10:55:44.309070806 +0100
-+++ Signal-Desktop-5.26.0/Gruntfile.js	2021-12-15 10:55:53.357219136 +0100
-@@ -171,9 +171,7 @@
-   });
- 
-   grunt.registerTask('getExpireTime', () => {
--    grunt.task.requires('gitinfo');
--    const gitinfo = grunt.config.get('gitinfo');
--    const committed = gitinfo.local.branch.current.lastCommitTime;
-+    const committed = parseInt(process.env.SOURCE_DATE_EPOCH, 10) * 1000;
-     const buildCreation = Date.parse(committed);
-     const buildExpiration = buildCreation + 1000 * 60 * 60 * 24 * 90;
-     grunt.file.write(
-diff -Naur Signal-Desktop-5.26.0.old/package.json Signal-Desktop-5.26.0/package.json
---- Signal-Desktop-5.26.0.old/package.json	2021-12-15 10:55:44.309070806 +0100
-+++ Signal-Desktop-5.26.0/package.json	2021-12-15 10:55:53.402219878 +0100
-@@ -300,59 +300,10 @@
+diff -Naur Signal-Desktop-5.27.1.old/package.json Signal-Desktop-5.27.1/package.json
+--- Signal-Desktop-5.27.1.old/package.json	2022-01-10 14:02:10.251287148 +0100
++++ Signal-Desktop-5.27.1/package.json	2022-01-10 14:05:22.036568285 +0100
+@@ -301,72 +301,10 @@
      "sharp/color/color-string": "1.5.5"
    },
    "engines": {
--    "node": "16.5.0"
-+    "node": "^16.5.0"
+-    "node": "16.9.1"
++    "node": "^16.9.1"
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
@@ -28,7 +14,7 @@ diff -Naur Signal-Desktop-5.26.0.old/package.json Signal-Desktop-5.26.0/package.
 -      "asarUnpack": [
 -        "**/*.node"
 -      ],
--      "artifactName": "${name}-mac-${version}.${ext}",
+-      "artifactName": "${name}-mac-${arch}-${version}.${ext}",
 -      "category": "public.app-category.social-networking",
 -      "darkModeSupport": true,
 -      "hardenedRuntime": true,
@@ -41,8 +27,21 @@ diff -Naur Signal-Desktop-5.26.0.old/package.json Signal-Desktop-5.26.0/package.
 -        }
 -      ],
 -      "target": [
--        "zip",
--        "dmg"
+-        {
+-          "target": "zip",
+-          "arch": [
+-            "x64",
+-            "arm64"
+-          ]
+-        },
+-        {
+-          "target": "dmg",
+-          "arch": [
+-            "x64",
+-            "arm64",
+-            "universal"
+-          ]
+-        }
 -      ],
 -      "bundleVersion": "1"
 -    },
@@ -76,7 +75,7 @@ diff -Naur Signal-Desktop-5.26.0.old/package.json Signal-Desktop-5.26.0/package.
      "linux": {
        "category": "Network;InstantMessaging;Chat",
        "desktop": {
-@@ -363,20 +314,8 @@
+@@ -377,20 +315,8 @@
          "node_modules/spellchecker/vendor/hunspell_dictionaries",
          "node_modules/sharp"
        ],
@@ -97,3 +96,15 @@ diff -Naur Signal-Desktop-5.26.0.old/package.json Signal-Desktop-5.26.0/package.
      "protocols": {
        "name": "sgnl-url-scheme",
        "schemes": [
+diff -Naur Signal-Desktop-5.27.1.old/ts/scripts/get-expire-time.ts Signal-Desktop-5.27.1/ts/scripts/get-expire-time.ts
+--- Signal-Desktop-5.27.1.old/ts/scripts/get-expire-time.ts	2022-01-10 14:02:10.327288448 +0100
++++ Signal-Desktop-5.27.1/ts/scripts/get-expire-time.ts	2022-01-13 09:39:00.486553301 +0100
+@@ -8,7 +8,7 @@
+ import { DAY } from '../util/durations';
+ 
+ const unixTimestamp = parseInt(
+-  execSync('git show -s --format=%ct').toString('utf8'),
++  execSync('date +%s').toString('utf8'),
+   10
+ );
+ const buildCreation = unixTimestamp * 1000;
