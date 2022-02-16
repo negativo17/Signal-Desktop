@@ -11,7 +11,7 @@
 #global beta beta.2
 
 Name:       Signal-Desktop
-Version:    5.30.0
+Version:    5.31.1
 Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
@@ -105,6 +105,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Wed Feb 16 2022 Simone Caronni <negativo17@gmail.com> - 5.31.1-1
+- Update to 5.31.1.
+
 * Thu Feb 03 2022 Simone Caronni <negativo17@gmail.com> - 5.30.0-1
 - Update to 5.30.0.
 
