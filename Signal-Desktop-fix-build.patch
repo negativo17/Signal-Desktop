@@ -1,7 +1,7 @@
-diff -Naur Signal-Desktop-5.35.0.old/package.json Signal-Desktop-5.35.0/package.json
---- Signal-Desktop-5.35.0.old/package.json	2022-03-10 11:36:20.911746441 +0100
-+++ Signal-Desktop-5.35.0/package.json	2022-03-10 11:36:45.467165542 +0100
-@@ -305,72 +305,10 @@
+diff -Naur Signal-Desktop-5.36.0.old/package.json Signal-Desktop-5.36.0/package.json
+--- Signal-Desktop-5.36.0.old/package.json	2022-03-24 13:49:32.442597558 +0100
++++ Signal-Desktop-5.36.0/package.json	2022-03-24 13:50:36.734691919 +0100
+@@ -307,74 +307,10 @@
      "sharp/color/color-string": "1.7.4"
    },
    "engines": {
@@ -26,6 +26,8 @@ diff -Naur Signal-Desktop-5.35.0.old/package.json Signal-Desktop-5.35.0/package.
 -          "url": "https://updates.signal.org/desktop"
 -        }
 -      ],
+-      "mergeASARs": true,
+-      "singleArchFiles": "node_modules/{@signalapp/signal-client/prebuilds/**,ringrtc/build/**,sharp/**}",
 -      "target": [
 -        {
 -          "target": "zip",
@@ -75,7 +77,7 @@ diff -Naur Signal-Desktop-5.35.0.old/package.json Signal-Desktop-5.35.0/package.
      "linux": {
        "category": "Network;InstantMessaging;Chat",
        "desktop": {
-@@ -381,20 +319,8 @@
+@@ -385,20 +321,8 @@
          "node_modules/spellchecker/vendor/hunspell_dictionaries",
          "node_modules/sharp"
        ],
@@ -96,9 +98,9 @@ diff -Naur Signal-Desktop-5.35.0.old/package.json Signal-Desktop-5.35.0/package.
      "protocols": {
        "name": "sgnl-url-scheme",
        "schemes": [
-diff -Naur Signal-Desktop-5.35.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-5.35.0/ts/scripts/get-expire-time.ts
---- Signal-Desktop-5.35.0.old/ts/scripts/get-expire-time.ts	2022-03-10 11:36:21.054748882 +0100
-+++ Signal-Desktop-5.35.0/ts/scripts/get-expire-time.ts	2022-03-10 11:36:45.470165594 +0100
+diff -Naur Signal-Desktop-5.36.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-5.36.0/ts/scripts/get-expire-time.ts
+--- Signal-Desktop-5.36.0.old/ts/scripts/get-expire-time.ts	2022-03-24 13:49:32.527599005 +0100
++++ Signal-Desktop-5.36.0/ts/scripts/get-expire-time.ts	2022-03-24 13:49:42.999777259 +0100
 @@ -8,7 +8,7 @@
  import { DAY } from '../util/durations';
  
