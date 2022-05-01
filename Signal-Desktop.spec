@@ -11,7 +11,7 @@
 #global beta beta.2
 
 Name:       Signal-Desktop
-Version:    5.41.0
+Version:    5.45.0
 Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
@@ -25,11 +25,10 @@ Patch0:     %{name}-fix-build.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
-BuildRequires:  git
+BuildRequires:  git-core
 BuildRequires:  git-lfs
 BuildRequires:  lzo
 BuildRequires:  npm >= 16
-BuildRequires:  openssl-devel
 BuildRequires:  python3
 BuildRequires:  yarnpkg
 
@@ -106,6 +105,15 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Thu Jun 02 2022 Simone Caronni <negativo17@gmail.com> - 5.45.0-1
+- Update to 5.45.0.
+
+* Sat May 14 2022 Simone Caronni <negativo17@gmail.com> - 5.43.0-1
+- Update to 5.43.0.
+
+* Thu May 05 2022 Simone Caronni <negativo17@gmail.com> - 5.42.0-1
+- Update to 5.42.0.
+
 * Sun May 01 2022 Simone Caronni <negativo17@gmail.com> - 5.41.0-1
 - Update to 5.41.0.
 
