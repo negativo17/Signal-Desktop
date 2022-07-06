@@ -6,4 +6,4 @@
 # folder and make sure that only the authy binary can access them.
 
 export LD_LIBRARY_PATH="INSTALL_DIR${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
-exec INSTALL_DIR/signal-desktop --disable-gpu --disable-seccomp-filter-sandbox "$@"
+exec INSTALL_DIR/signal-desktop "$@"

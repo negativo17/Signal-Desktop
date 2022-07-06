@@ -12,7 +12,7 @@
 
 Name:       Signal-Desktop
 Version:    5.48.0
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
 URL:        https://signal.org/
@@ -109,6 +109,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
 
 %changelog
+* Wed Jul 06 2022 Simone Caronni <negativo17@gmail.com> - 5.48.0-2
+- Re-enable GPU acceleration, it works now with the updated bundled Electron
+
 * Tue Jul 05 2022 Simone Caronni <negativo17@gmail.com> - 5.48.0-1
 - Update to 5.48.0.
 
