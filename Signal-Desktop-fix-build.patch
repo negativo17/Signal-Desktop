@@ -1,8 +1,8 @@
-diff -Naur Signal-Desktop-5.51.0.old/package.json Signal-Desktop-5.51.0/package.json
---- Signal-Desktop-5.51.0.old/package.json	2022-07-22 07:49:52.928027767 +0200
-+++ Signal-Desktop-5.51.0/package.json	2022-07-22 07:49:53.083030662 +0200
-@@ -317,66 +317,10 @@
-     "sharp/color/color-string": "1.7.4"
+diff -Naur Signal-Desktop-5.53.0.old/package.json Signal-Desktop-5.53.0/package.json
+--- Signal-Desktop-5.53.0.old/package.json	2022-08-08 21:52:06.691583581 +0200
++++ Signal-Desktop-5.53.0/package.json	2022-08-08 21:52:06.971589062 +0200
+@@ -318,66 +318,10 @@
+     "sharp/color/color-string": "1.9.0"
    },
    "engines": {
 -    "node": "16.13.2"
@@ -69,7 +69,7 @@ diff -Naur Signal-Desktop-5.51.0.old/package.json Signal-Desktop-5.51.0/package.
      "linux": {
        "category": "Network;InstantMessaging;Chat",
        "desktop": {
-@@ -387,15 +331,6 @@
+@@ -388,15 +332,6 @@
        ],
        "icon": "build/icons/png"
      },
@@ -85,9 +85,9 @@ diff -Naur Signal-Desktop-5.51.0.old/package.json Signal-Desktop-5.51.0/package.
      "protocols": {
        "name": "sgnl-url-scheme",
        "schemes": [
-diff -Naur Signal-Desktop-5.51.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-5.51.0/ts/scripts/get-expire-time.ts
---- Signal-Desktop-5.51.0.old/ts/scripts/get-expire-time.ts	2022-07-22 07:49:53.042029897 +0200
-+++ Signal-Desktop-5.51.0/ts/scripts/get-expire-time.ts	2022-07-22 07:49:53.142031764 +0200
+diff -Naur Signal-Desktop-5.53.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-5.53.0/ts/scripts/get-expire-time.ts
+--- Signal-Desktop-5.53.0.old/ts/scripts/get-expire-time.ts	2022-08-08 21:52:06.851586713 +0200
++++ Signal-Desktop-5.53.0/ts/scripts/get-expire-time.ts	2022-08-08 21:52:06.971589062 +0200
 @@ -8,7 +8,7 @@
  import { DAY } from '../util/durations';
  
