@@ -1,7 +1,7 @@
 diff -Naur Signal-Desktop-5.59.0.old/package.json Signal-Desktop-5.59.0/package.json
 --- Signal-Desktop-5.59.0.old/package.json	2022-09-21 08:07:30.380804394 +0200
-+++ Signal-Desktop-5.59.0/package.json	2022-09-21 08:11:10.780749570 +0200
-@@ -319,65 +319,10 @@
++++ Signal-Desktop-5.59.0/package.json	2022-09-21 08:15:24.881297989 +0200
+@@ -319,66 +319,10 @@
      "sharp/color/color-string": "1.9.0"
    },
    "engines": {
@@ -65,10 +65,11 @@ diff -Naur Signal-Desktop-5.59.0.old/package.json Signal-Desktop-5.59.0/package.
 -    },
 -    "nsis": {
 -      "deleteAppDataOnUninstall": true
-     },
+-    },
      "linux": {
        "category": "Network;InstantMessaging;Chat",
-@@ -389,15 +334,6 @@
+       "desktop": {
+@@ -389,15 +333,6 @@
        ],
        "icon": "build/icons/png"
      },
