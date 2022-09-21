@@ -1,12 +1,12 @@
-diff -Naur Signal-Desktop-5.57.0.old/package.json Signal-Desktop-5.57.0/package.json
---- Signal-Desktop-5.57.0.old/package.json	2022-09-04 12:53:35.523728130 +0200
-+++ Signal-Desktop-5.57.0/package.json	2022-09-04 12:53:35.708731718 +0200
-@@ -319,66 +319,10 @@
+diff -Naur Signal-Desktop-5.59.0.old/package.json Signal-Desktop-5.59.0/package.json
+--- Signal-Desktop-5.59.0.old/package.json	2022-09-21 08:07:30.380804394 +0200
++++ Signal-Desktop-5.59.0/package.json	2022-09-21 08:11:10.780749570 +0200
+@@ -319,65 +319,10 @@
      "sharp/color/color-string": "1.9.0"
    },
    "engines": {
--    "node": "16.13.2"
-+    "node": "^16.13.2"
+-    "node": "16.15.0"
++    "node": "^16.15.0"
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
@@ -65,11 +65,10 @@ diff -Naur Signal-Desktop-5.57.0.old/package.json Signal-Desktop-5.57.0/package.
 -    },
 -    "nsis": {
 -      "deleteAppDataOnUninstall": true
--    },
+     },
      "linux": {
        "category": "Network;InstantMessaging;Chat",
-       "desktop": {
-@@ -389,15 +333,6 @@
+@@ -389,15 +334,6 @@
        ],
        "icon": "build/icons/png"
      },
@@ -85,9 +84,9 @@ diff -Naur Signal-Desktop-5.57.0.old/package.json Signal-Desktop-5.57.0/package.
      "protocols": {
        "name": "sgnl-url-scheme",
        "schemes": [
-diff -Naur Signal-Desktop-5.57.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-5.57.0/ts/scripts/get-expire-time.ts
---- Signal-Desktop-5.57.0.old/ts/scripts/get-expire-time.ts	2022-09-04 12:53:35.664730865 +0200
-+++ Signal-Desktop-5.57.0/ts/scripts/get-expire-time.ts	2022-09-04 12:53:35.753732591 +0200
+diff -Naur Signal-Desktop-5.59.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-5.59.0/ts/scripts/get-expire-time.ts
+--- Signal-Desktop-5.59.0.old/ts/scripts/get-expire-time.ts	2022-09-21 08:07:30.494806435 +0200
++++ Signal-Desktop-5.59.0/ts/scripts/get-expire-time.ts	2022-09-21 08:10:17.098788658 +0200
 @@ -8,7 +8,7 @@
  import { DAY } from '../util/durations';
  
