@@ -1,93 +1,18 @@
 diff -Naur Signal-Desktop-5.62.0.old/package.json Signal-Desktop-5.62.0/package.json
---- Signal-Desktop-5.62.0.old/package.json	2022-10-06 15:47:09.720593172 +0200
-+++ Signal-Desktop-5.62.0/package.json	2022-10-06 15:47:09.873595911 +0200
-@@ -324,66 +324,10 @@
+--- Signal-Desktop-5.62.0.old/package.json	2022-10-06 03:13:19.000000000 +0200
++++ Signal-Desktop-5.62.0/package.json	2022-10-29 08:50:32.823196253 +0200
+@@ -324,7 +324,7 @@
      "sharp/color/color-string": "1.9.0"
    },
    "engines": {
 -    "node": "16.15.0"
-+    "node": "^16.15.0"
++    "node": "^16"
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
--    "mac": {
--      "artifactName": "${name}-mac-${arch}-${version}.${ext}",
--      "category": "public.app-category.social-networking",
--      "darkModeSupport": true,
--      "hardenedRuntime": true,
--      "entitlements": "./build/entitlements.mac.plist",
--      "icon": "build/icons/mac/icon.icns",
--      "publish": [
--        {
--          "provider": "generic",
--          "url": "https://updates.signal.org/desktop"
--        }
--      ],
--      "mergeASARs": true,
--      "singleArchFiles": "node_modules/{@signalapp/libsignal-client/prebuilds/**,ringrtc/build/**,sharp/**}",
--      "target": [
--        {
--          "target": "zip",
--          "arch": [
--            "x64",
--            "arm64"
--          ]
--        },
--        {
--          "target": "dmg",
--          "arch": [
--            "x64",
--            "arm64",
--            "universal"
--          ]
--        }
--      ],
--      "bundleVersion": "1"
--    },
--    "win": {
--      "artifactName": "${name}-win-${version}.${ext}",
--      "certificateSubjectName": "Signal Messenger, LLC",
--      "certificateSha1": "8C9A0B5C852EC703D83EF7BFBCEB54B796073759",
--      "signingHashAlgorithms": [
--        "sha256"
--      ],
--      "publisherName": "Signal Messenger, LLC",
--      "icon": "build/icons/win/icon.ico",
--      "publish": [
--        {
--          "provider": "generic",
--          "url": "https://updates.signal.org/desktop"
--        }
--      ],
--      "target": [
--        "nsis"
--      ]
--    },
--    "nsis": {
--      "deleteAppDataOnUninstall": true
--    },
-     "linux": {
-       "category": "Network;InstantMessaging;Chat",
-       "desktop": {
-@@ -394,15 +338,6 @@
-       ],
-       "icon": "build/icons/png"
-     },
--    "deb": {
--      "depends": [
--        "libnotify4",
--        "libxtst6",
--        "libnss3",
--        "libasound2",
--        "libxss1"
--      ]
--    },
-     "protocols": {
-       "name": "sgnl-url-scheme",
-       "schemes": [
 diff -Naur Signal-Desktop-5.62.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-5.62.0/ts/scripts/get-expire-time.ts
---- Signal-Desktop-5.62.0.old/ts/scripts/get-expire-time.ts	2022-10-06 15:47:09.831595159 +0200
-+++ Signal-Desktop-5.62.0/ts/scripts/get-expire-time.ts	2022-10-06 15:47:09.875595947 +0200
+--- Signal-Desktop-5.62.0.old/ts/scripts/get-expire-time.ts	2022-10-06 03:13:19.000000000 +0200
++++ Signal-Desktop-5.62.0/ts/scripts/get-expire-time.ts	2022-10-29 08:50:35.264239908 +0200
 @@ -8,7 +8,7 @@
  import { DAY } from '../util/durations';
  

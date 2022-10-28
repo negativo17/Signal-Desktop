@@ -1,3 +1,6 @@
+# mock configuration:
+# - Requires network for running yarn/electron build
+
 %global debug_package %{nil}
 # Build id links are sometimes in conflict with other RPMs.
 %define _build_id_links none
@@ -10,9 +13,11 @@
 
 #global beta beta.2
 
+%global desktop_id org.signal.Signal
+
 Name:       Signal-Desktop
 Version:    5.62.0
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
 URL:        https://signal.org/
@@ -21,12 +26,14 @@ BuildArch:  aarch64 x86_64
 Source0:    https://github.com/signalapp/%{name}/archive/v%{version}%{?beta:-%{beta}}.tar.gz#/Signal-Desktop-%{version}%{?beta:-%{beta}}.tar.gz
 Source1:    %{name}-wrapper
 Source2:    %{name}.desktop
+Source3:    %{desktop_id}.metainfo.xml
 Patch0:     %{name}-fix-build.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  git-lfs
+BuildRequires:  libappstream-glib
 BuildRequires:  lzo
 BuildRequires:  npm >= 16
 BuildRequires:  python3
@@ -57,9 +64,10 @@ iOS.
 %autosetup -p1 -n %{name}-%{version}%{?beta:-%{beta}}
 
 %build
-yarn install --ignore-engines
+# Use a huge timeout for aarch64 builds
+yarn install --ignore-engines --network-timeout 1000000
 yarn generate
-yarn build
+yarn build:release --dir
 
 # Remove non-relevant binaries
 pushd release/linux-unpacked/
@@ -98,17 +106,30 @@ chmod +x %{buildroot}%{_bindir}/signal-desktop
 # Desktop file
 install -m 0644 -D -p %{SOURCE2} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
+# AppData file
+install -m 0644 -D -p %{SOURCE3} %{buildroot}%{_metainfodir}/%{desktop_id}.metainfo.xml
+
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.metainfo.xml
 
 %files
 %doc LICENSE
 %{_bindir}/signal-desktop
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_metainfodir}/%{desktop_id}.metainfo.xml
 %{_libdir}/%{name}
 
 %changelog
+* Sun Oct 30 2022 Simone Caronni <negativo17@gmail.com> - 5.62.0-2
+- Add note about mock configuration.
+- Trim changelog.
+- Increase timeout for aarch64 builds.
+- Reduce patching, skip useless steps and make it work with Node.js packages in
+  main distribution.
+- Add AppData.
+
 * Thu Oct 06 2022 Simone Caronni <negativo17@gmail.com> - 5.62.0-1
 - Update to 5.62.0.
 
@@ -229,75 +250,3 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 * Thu Nov 04 2021 Simone Caronni <negativo17@gmail.com> - 5.23.0-1
 - Update to 5.23.0.
-
-* Thu Oct 28 2021 Simone Caronni <negativo17@gmail.com> - 5.22.0-1
-- Update to 5.22.0.
-
-* Tue Oct 26 2021 Simone Caronni <negativo17@gmail.com> - 5.21.0-1
-- Update to 5.21.0.
-
-* Fri Oct 15 2021 Simone Caronni <negativo17@gmail.com> - 5.20.0-1
-- Update to 5.20.0.
-
-* Wed Oct 06 2021 Simone Caronni <negativo17@gmail.com> - 5.19.0-1
-- Update to 5.19.0.
-
-* Tue Oct 05 2021 Simone Caronni <negativo17@gmail.com> - 5.18.1-1
-- Update to 5.18.1.
-
-* Mon Oct 04 2021 Simone Caronni <negativo17@gmail.com> - 5.18.0-1
-- Update to 5.18.0.
-
-* Fri Sep 17 2021 Simone Caronni <negativo17@gmail.com> - 5.17.2-1
-- Update to 5.17.2.
-
-* Sat Sep 11 2021 Simone Caronni <negativo17@gmail.com> - 5.17.1-1
-- Update to 5.17.1.
-
-* Thu Sep 09 2021 Simone Caronni <negativo17@gmail.com> - 5.17.0-1
-- Update to 5.17.0.
-
-* Mon Sep 06 2021 Simone Caronni <negativo17@gmail.com> - 5.16.0-1
-- Update to 5.16.0.
-
-* Thu Aug 26 2021 Simone Caronni <negativo17@gmail.com> - 5.15.0-1
-- Update to 5.15.0.
-
-* Thu Aug 19 2021 Simone Caronni <negativo17@gmail.com> - 5.14.0-1
-- Update to 5.14.0.
-
-* Mon Aug 16 2021 Simone Caronni <negativo17@gmail.com> - 5.13.1-1
-- Update to 5.13.1.
-
-* Thu Aug 12 2021 Simone Caronni <negativo17@gmail.com> - 5.13.0-2
-- Update to 5.13.0 final.
-
-* Wed Aug 11 2021 Simone Caronni <negativo17@gmail.com> - 5.13.0-1
-- Update to 5.13.0-beta.2 due to issues with releases and versions in the
-  5.12.x branch (release 5.12.2 contained 5.12.0-beta.1 code).
-
-* Fri Aug 06 2021 Simone Caronni <negativo17@gmail.com> - 5.12.2-1
-- Update to 5.12.2.
-
-* Thu Aug 05 2021 Simone Caronni <negativo17@gmail.com> - 5.12.1-1
-- Update to 5.12.1.
-
-* Wed Aug 04 2021 Simone Caronni <negativo17@gmail.com> - 5.12.0-1
-- Update to 5.12.0.
-
-* Tue Jul 27 2021 Simone Caronni <negativo17@gmail.com> - 5.10.0-1
-- Update to 5.10.0.
-- Fix library filter.
-
-* Sat Jun 26 2021 Simone Caronni <negativo17@gmail.com> - 5.6.2-1
-- Update to 5.6.2.
-
-* Sat Jun 05 2021 Simone Caronni <negativo17@gmail.com> - 5.4.0-1
-- Update to 5.4.0.
-
-* Fri Jun 04 2021 Simone Caronni <negativo17@gmail.com> - 5.3.0-1
-- Update to 5.3.0.
-
-* Sun May 23 2021 Simone Caronni <negativo17@gmail.com> - 5.2.1-1
-- Update to 5.2.1.
-- Clean up SPEC file.
