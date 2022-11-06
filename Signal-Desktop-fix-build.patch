@@ -1,7 +1,7 @@
-diff -Naur Signal-Desktop-5.62.0.old/package.json Signal-Desktop-5.62.0/package.json
---- Signal-Desktop-5.62.0.old/package.json	2022-10-06 03:13:19.000000000 +0200
-+++ Signal-Desktop-5.62.0/package.json	2022-10-29 08:50:32.823196253 +0200
-@@ -324,7 +324,7 @@
+diff -Naur Signal-Desktop-5.63.0.old/package.json Signal-Desktop-5.63.0/package.json
+--- Signal-Desktop-5.63.0.old/package.json	2022-11-06 11:52:02.868776875 +0100
++++ Signal-Desktop-5.63.0/package.json	2022-11-06 11:52:03.125781406 +0100
+@@ -327,7 +327,7 @@
      "sharp/color/color-string": "1.9.0"
    },
    "engines": {
@@ -10,9 +10,9 @@ diff -Naur Signal-Desktop-5.62.0.old/package.json Signal-Desktop-5.62.0/package.
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
-diff -Naur Signal-Desktop-5.62.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-5.62.0/ts/scripts/get-expire-time.ts
---- Signal-Desktop-5.62.0.old/ts/scripts/get-expire-time.ts	2022-10-06 03:13:19.000000000 +0200
-+++ Signal-Desktop-5.62.0/ts/scripts/get-expire-time.ts	2022-10-29 08:50:35.264239908 +0200
+diff -Naur Signal-Desktop-5.63.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-5.63.0/ts/scripts/get-expire-time.ts
+--- Signal-Desktop-5.63.0.old/ts/scripts/get-expire-time.ts	2022-11-06 11:52:03.052780119 +0100
++++ Signal-Desktop-5.63.0/ts/scripts/get-expire-time.ts	2022-11-06 11:52:03.125781406 +0100
 @@ -8,7 +8,7 @@
  import { DAY } from '../util/durations';
  
