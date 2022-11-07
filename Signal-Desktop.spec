@@ -70,7 +70,7 @@ yarn generate
 yarn build:release --dir
 
 # Remove non-relevant binaries
-pushd release/linux-unpacked/
+pushd release/linux-*unpacked/
 
 rm -fr chrome_*.pak chrome-sandbox swiftshader
 find . -type f -depth -name "*.dylib" -delete
@@ -89,7 +89,7 @@ popd
 install -dm 755 %{buildroot}%{_libdir}/%{name}
 install -dm 755 %{buildroot}%{_bindir}
 
-cp -fr release/linux-unpacked/* %{buildroot}%{_libdir}/%{name}
+cp -fr release/linux*unpacked/* %{buildroot}%{_libdir}/%{name}
 
 # Icons
 for size in 16 24 32 48 64 128 256 512 1024; do
@@ -122,7 +122,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 %{_libdir}/%{name}
 
 %changelog
-* Sun Nov 06 2022 Simone Caronni <negativo17@gmail.com> - 5.63.0-1
+* Mon Nov 07 2022 Simone Caronni <negativo17@gmail.com> - 5.63.0-1
 - Update to 5.63.0.
 
 * Sun Oct 30 2022 Simone Caronni <negativo17@gmail.com> - 5.62.0-2
