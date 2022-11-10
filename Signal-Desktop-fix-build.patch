@@ -6,7 +6,7 @@ diff -Naur Signal-Desktop-5.63.0.old/package.json Signal-Desktop-5.63.0/package.
    },
    "engines": {
 -    "node": "16.15.0"
-+    "node": "^16"
++    "node": ">=16"
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
