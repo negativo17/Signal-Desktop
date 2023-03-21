@@ -17,7 +17,7 @@
 
 Name:       Signal-Desktop
 Version:    6.10.1
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
 URL:        https://signal.org/
@@ -35,13 +35,20 @@ BuildRequires:  git-core
 BuildRequires:  git-lfs
 BuildRequires:  libappstream-glib
 BuildRequires:  lzo
-BuildRequires:  npm >= 16
 BuildRequires:  python3
 BuildRequires:  yarnpkg
 
 %if 0%{?fedora}
 BuildRequires:  libxcrypt-compat
 %endif
+
+# el8, el9 and fc36 have a DNF module for the various NodeJS/NPM versions.
+# fc37+ has packages with different names, each one providing npm with the
+# internal version, not matching with the NodeJS one.
+# On top of this, yarnpkg requires /usr/bin/npm, which in the case of Fedora 37
+# is provided only by the non-versioned nodejs packages, so NodeJS 18.
+# So just require the binary and be done with it, the version needs to be >= 16.
+BuildRequires:  /usr/bin/npm
 
 Requires:   libappindicator-gtk3
 Requires:   libnotify
@@ -122,6 +129,10 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 %{_libdir}/%{name}
 
 %changelog
+* Tue Mar 21 2023 Simone Caronni <negativo17@gmail.com> - 6.10.1-2
+- Trim changelog.
+- Adjust requirements for npm and provide an explanation.
+
 * Mon Mar 20 2023 Simone Caronni <negativo17@gmail.com> - 6.10.1-1
 - Update to 6.10.1.
 
@@ -168,121 +179,3 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 
 * Thu Oct 06 2022 Simone Caronni <negativo17@gmail.com> - 5.62.0-1
 - Update to 5.62.0.
-
-* Wed Oct 05 2022 Simone Caronni <negativo17@gmail.com> - 5.61.1-1
-- Update to 5.61.1.
-
-* Thu Sep 29 2022 Simone Caronni <negativo17@gmail.com> - 5.61.0-1
-- Update to 5.61.0.
-
-* Sun Sep 25 2022 Simone Caronni <negativo17@gmail.com> - 5.60.0-1
-- Update to 5.60.0.
-
-* Wed Sep 21 2022 Simone Caronni <negativo17@gmail.com> - 5.59.0-1
-- Update to 5.59.0.
-
-* Sun Sep 04 2022 Simone Caronni <negativo17@gmail.com> - 5.57.0-1
-- Update to 5.57.0.
-
-* Fri Aug 26 2022 Simone Caronni <negativo17@gmail.com> - 5.56.0-1
-- Update to 5.56.0.
-
-* Thu Aug 18 2022 Simone Caronni <negativo17@gmail.com> - 5.55.0-1
-- Update to 5.55.0.
-
-* Wed Aug 10 2022 Simone Caronni <negativo17@gmail.com> - 5.54.0-1
-- Update to 5.54.0.
-
-* Mon Aug 08 2022 Simone Caronni <negativo17@gmail.com> - 5.53.0-1
-- Update to 5.53.0.
-
-* Fri Jul 22 2022 Simone Caronni <negativo17@gmail.com> - 5.51.0-1
-- Update to 5.51.0.
-
-* Tue Jul 19 2022 Simone Caronni <negativo17@gmail.com> - 5.50.1-1
-- Update to 5.50.1.
-
-* Sat Jul 09 2022 Simone Caronni <negativo17@gmail.com> - 5.49.0-1
-- Update to 5.49.0.
-
-* Wed Jul 06 2022 Simone Caronni <negativo17@gmail.com> - 5.48.0-2
-- Re-enable GPU acceleration, it works now with the updated bundled Electron
-
-* Tue Jul 05 2022 Simone Caronni <negativo17@gmail.com> - 5.48.0-1
-- Update to 5.48.0.
-
-* Fri Jun 24 2022 Simone Caronni <negativo17@gmail.com> - 5.47.0-1
-- Update to 5.47.0.
-
-* Fri Jun 17 2022 Simone Caronni <negativo17@gmail.com> - 5.46.0-1
-- Update to 5.46.0.
-
-* Sun Jun 12 2022 Simone Caronni <negativo17@gmail.com> - 5.45.1-1
-- Update to 5.45.1.
-
-* Thu Jun 02 2022 Simone Caronni <negativo17@gmail.com> - 5.45.0-1
-- Update to 5.45.0.
-
-* Sat May 14 2022 Simone Caronni <negativo17@gmail.com> - 5.43.0-1
-- Update to 5.43.0.
-
-* Thu May 05 2022 Simone Caronni <negativo17@gmail.com> - 5.42.0-1
-- Update to 5.42.0.
-
-* Sun May 01 2022 Simone Caronni <negativo17@gmail.com> - 5.41.0-1
-- Update to 5.41.0.
-
-* Sun Apr 17 2022 Simone Caronni <negativo17@gmail.com> - 5.39.0-1
-- Update to 5.39.0.
-
-* Thu Mar 24 2022 Simone Caronni <negativo17@gmail.com> - 5.36.0-1
-- Update to 5.36.0.
-
-* Thu Mar 10 2022 Simone Caronni <negativo17@gmail.com> - 5.35.0-1
-- Update to 5.35.0.
-
-* Sun Mar 06 2022 Simone Caronni <negativo17@gmail.com> - 5.34.0-1
-- Update to 5.34.0.
-
-* Fri Feb 25 2022 Simone Caronni <negativo17@gmail.com> - 5.33.0-1
-- Update to 5.33.0
-
-* Wed Feb 16 2022 Simone Caronni <negativo17@gmail.com> - 5.31.1-1
-- Update to 5.31.1.
-
-* Thu Feb 03 2022 Simone Caronni <negativo17@gmail.com> - 5.30.0-1
-- Update to 5.30.0.
-
-* Wed Jan 26 2022 Simone Caronni <negativo17@gmail.com> - 5.29.1-1
-- Update to 5.29.1.
-
-* Fri Jan 21 2022 Simone Caronni <negativo17@gmail.com> - 5.29.0-1
-- Update to 5.29.0.
-
-* Thu Jan 13 2022 Simone Caronni <negativo17@gmail.com> - 5.28.0-1
-- Update to 5.28.0.
-
-* Mon Jan 10 2022 Simone Caronni <negativo17@gmail.com> - 5.27.1-1
-- Update to 5.27.1.
-
-* Wed Dec 15 2021 Simone Caronni <negativo17@gmail.com> - 5.26.0-1
-- Update to 5.26.0.
-
-* Mon Dec 13 2021 Simone Caronni <negativo17@gmail.com> - 5.25.1-2
-- Fix build id links in conflict with other RPMs.
-
-* Thu Dec 09 2021 Simone Caronni <negativo17@gmail.com> - 5.25.1-1
-- Update to 5.25.1.
-
-* Sun Nov 21 2021 Simone Caronni <negativo17@gmail.com> - 5.24.0-2
-- Add wrapper script, fixes crash on Intel GPUs.
-- Trim changelog.
-
-* Thu Nov 18 2021 Simone Caronni <negativo17@gmail.com> - 5.24.0-1
-- Update to 5.24.0.
-
-* Wed Nov 10 2021 Simone Caronni <negativo17@gmail.com> - 5.23.1-1
-- Update to 5.23.1.
-
-* Thu Nov 04 2021 Simone Caronni <negativo17@gmail.com> - 5.23.0-1
-- Update to 5.23.0.
