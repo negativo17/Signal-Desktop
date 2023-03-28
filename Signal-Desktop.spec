@@ -17,7 +17,7 @@
 
 Name:       Signal-Desktop
 Version:    6.11.0
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
 URL:        https://signal.org/
@@ -34,21 +34,18 @@ BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  git-lfs
 BuildRequires:  libappstream-glib
+%if 0%{?fedora}
+BuildRequires:  libxcrypt-compat
+%endif
 BuildRequires:  lzo
 BuildRequires:  python3
 BuildRequires:  yarnpkg
 
-%if 0%{?fedora}
-BuildRequires:  libxcrypt-compat
+%if 0%{?fedora} >= 37
+BuildRequires:  nodejs-npm
+%else
+BuildRequires:  npm
 %endif
-
-# el8, el9 and fc36 have a DNF module for the various NodeJS/NPM versions.
-# fc37+ has packages with different names, each one providing npm with the
-# internal version, not matching with the NodeJS one.
-# On top of this, yarnpkg requires /usr/bin/npm, which in the case of Fedora 37
-# is provided only by the non-versioned nodejs packages, so NodeJS 18.
-# So just require the binary and be done with it, the version needs to be >= 16.
-BuildRequires:  /usr/bin/npm
 
 Requires:   libappindicator-gtk3
 Requires:   libnotify
@@ -129,6 +126,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 %{_libdir}/%{name}
 
 %changelog
+* Tue Mar 28 2023 Simone Caronni <negativo17@gmail.com> - 6.11.0-2
+- Adjust requirements for npm again.
+
 * Sun Mar 26 2023 Simone Caronni <negativo17@gmail.com> - 6.11.0-1
 - Update to 6.11.0.
 
