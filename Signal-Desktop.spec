@@ -68,8 +68,10 @@ iOS.
 %autosetup -p1 -n %{name}-%{version}%{?beta:-%{beta}}
 
 %build
+mkdir -p .config/yarn/global
+mv .yarnclean .config/yarn/global
 # Use a huge timeout for aarch64 builds
-yarn install --ignore-engines --network-timeout 1000000
+yarn install --frozen-lockfile --network-timeout 1000000
 yarn generate
 yarn build:release --dir
 
