@@ -26,7 +26,7 @@ BuildArch:  aarch64 x86_64
 Source0:    https://github.com/signalapp/%{name}/archive/v%{version}%{?beta:-%{beta}}.tar.gz#/Signal-Desktop-%{version}%{?beta:-%{beta}}.tar.gz
 Source1:    %{name}-wrapper
 Source2:    %{name}.desktop
-Source3:    %{desktop_id}.metainfo.xml
+Source3:    https://raw.githubusercontent.com/flathub/%{desktop_id}/master/%{desktop_id}.metainfo.xml
 Patch0:     %{name}-fix-build.patch
 
 BuildRequires:  desktop-file-utils
