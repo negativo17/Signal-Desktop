@@ -34,14 +34,12 @@ BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  git-lfs
 BuildRequires:  libappstream-glib
-%if 0%{?fedora}
-BuildRequires:  libxcrypt-compat
-%endif
 BuildRequires:  lzo
 BuildRequires:  python3
 BuildRequires:  yarnpkg
 
-%if 0%{?fedora} >= 37
+%if 0%{?fedora}
+BuildRequires:  libxcrypt-compat
 BuildRequires:  nodejs-npm
 %else
 BuildRequires:  npm
