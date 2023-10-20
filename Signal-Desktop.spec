@@ -16,7 +16,7 @@
 %global desktop_id org.signal.Signal
 
 Name:       Signal-Desktop
-Version:    6.34.1
+Version:    6.35.0
 Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
@@ -126,6 +126,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 %{_libdir}/%{name}
 
 %changelog
+* Fri Oct 20 2023 Simone Caronni <negativo17@gmail.com> - 6.35.0-1
+- Update to 6.35.0.
+
 * Tue Oct 17 2023 Simone Caronni <negativo17@gmail.com> - 6.34.1-1
 - Update to 6.34.1.
 
