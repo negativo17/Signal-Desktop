@@ -16,7 +16,7 @@
 %global desktop_id org.signal.Signal
 
 Name:       Signal-Desktop
-Version:    6.37.0
+Version:    6.38.0
 Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
@@ -127,6 +127,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 %{_libdir}/%{name}
 
 %changelog
+* Thu Nov 09 2023 Simone Caronni <negativo17@gmail.com> - 6.38.0-1
+- Update to 6.38.0.
+
 * Thu Nov 02 2023 Simone Caronni <negativo17@gmail.com> - 6.37.0-1
 - Update to 6.37.0.
 - Update node-gyp to fix Python 3.12 / Fedora 39 builds.
