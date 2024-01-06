@@ -16,7 +16,7 @@
 %global desktop_id org.signal.Signal
 
 Name:       Signal-Desktop
-Version:    6.42.1
+Version:    6.43.1
 Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
@@ -28,7 +28,6 @@ Source1:    %{name}-wrapper
 Source2:    %{name}.desktop
 Source3:    https://raw.githubusercontent.com/flathub/%{desktop_id}/master/%{desktop_id}.metainfo.xml
 Patch0:     %{name}-fix-build.patch
-Patch1:     %{name}-deps.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
@@ -127,6 +126,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 %{_libdir}/%{name}
 
 %changelog
+* Sat Jan 06 2024 Simone Caronni <negativo17@gmail.com> - 6.43.1-1
+- Update to 6.43.1.
+
 * Thu Dec 28 2023 Simone Caronni <negativo17@gmail.com> - 6.42.1-1
 - Update to 6.42.1.
 
