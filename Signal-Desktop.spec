@@ -112,6 +112,9 @@ install -m 0644 -D -p %{SOURCE2} %{buildroot}%{_datadir}/applications/%{name}.de
 
 # AppData file
 install -m 0644 -D -p %{SOURCE3} %{buildroot}%{_metainfodir}/%{desktop_id}.metainfo.xml
+%if 0%{?rhel}
+sed -i -e '/url type="contribute"/d' %{buildroot}%{_metainfodir}/%{desktop_id}.metainfo.xml
+%endif
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
