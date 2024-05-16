@@ -1,6 +1,6 @@
-diff -Naur Signal-Desktop-7.8.0.old/package.json Signal-Desktop-7.8.0/package.json
---- Signal-Desktop-7.8.0.old/package.json	2024-05-14 14:02:56.940097867 +0200
-+++ Signal-Desktop-7.8.0/package.json	2024-05-14 14:02:57.107097972 +0200
+diff -Naur Signal-Desktop-7.9.0.old/package.json Signal-Desktop-7.9.0/package.json
+--- Signal-Desktop-7.9.0.old/package.json	2024-05-16 16:39:00.286573528 +0200
++++ Signal-Desktop-7.9.0/package.json	2024-05-16 16:39:00.441573435 +0200
 @@ -354,7 +354,7 @@
      "read-last-lines/mz/thenify-all/thenify": "3.3.1"
    },
@@ -10,9 +10,9 @@ diff -Naur Signal-Desktop-7.8.0.old/package.json Signal-Desktop-7.8.0/package.js
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
-diff -Naur Signal-Desktop-7.8.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-7.8.0/ts/scripts/get-expire-time.ts
---- Signal-Desktop-7.8.0.old/ts/scripts/get-expire-time.ts	2024-05-14 14:02:57.028097922 +0200
-+++ Signal-Desktop-7.8.0/ts/scripts/get-expire-time.ts	2024-05-14 14:02:57.108097972 +0200
+diff -Naur Signal-Desktop-7.9.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-7.9.0/ts/scripts/get-expire-time.ts
+--- Signal-Desktop-7.9.0.old/ts/scripts/get-expire-time.ts	2024-05-16 16:39:00.367573480 +0200
++++ Signal-Desktop-7.9.0/ts/scripts/get-expire-time.ts	2024-05-16 16:39:00.442573435 +0200
 @@ -9,7 +9,7 @@
  
  const unixTimestamp = parseInt(
