@@ -16,7 +16,7 @@
 %global desktop_id org.signal.Signal
 
 Name:       Signal-Desktop
-Version:    7.13.0
+Version:    7.14.0
 Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
@@ -25,8 +25,8 @@ BuildArch:  aarch64 x86_64
 
 Source0:    https://github.com/signalapp/%{name}/archive/v%{version}%{?beta:-%{beta}}.tar.gz#/Signal-Desktop-%{version}%{?beta:-%{beta}}.tar.gz
 Source1:    %{name}-wrapper
-Source2:    %{name}.desktop
-Source3:    https://raw.githubusercontent.com/flathub/%{desktop_id}/master/%{desktop_id}.metainfo.xml
+Source2:    %{desktop_id}.desktop
+Source3:    %{desktop_id}.metainfo.xml
 Patch0:     %{name}-fix-build.patch
 
 BuildRequires:  desktop-file-utils
@@ -108,7 +108,7 @@ cat %{SOURCE1} | sed -e 's|INSTALL_DIR|%{_libdir}/%{name}|g' \
 chmod +x %{buildroot}%{_bindir}/signal-desktop
 
 # Desktop file
-install -m 0644 -D -p %{SOURCE2} %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -m 0644 -D -p %{SOURCE2} %{buildroot}%{_datadir}/applications/%{desktop_id}.desktop
 
 # AppData file
 install -m 0644 -D -p %{SOURCE3} %{buildroot}%{_metainfodir}/%{desktop_id}.metainfo.xml
@@ -117,18 +117,22 @@ sed -i -e '/url type="contribute"/d' %{buildroot}%{_metainfodir}/%{desktop_id}.m
 %endif
 
 %check
-desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{desktop_id}.desktop
 appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.metainfo.xml
 
 %files
 %doc LICENSE
 %{_bindir}/signal-desktop
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/%{desktop_id}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_metainfodir}/%{desktop_id}.metainfo.xml
 %{_libdir}/%{name}
 
 %changelog
+* Fri Jun 28 2024 Simone Caronni <negativo17@gmail.com> - 7.14.0-1
+- Update to 7.14.0.
+- Rename desktop file to autopopulate icon in Appstream metadata.
+
 * Sat Jun 22 2024 Simone Caronni <negativo17@gmail.com> - 7.13.0-1
 - Update to 7.13.0.
 
