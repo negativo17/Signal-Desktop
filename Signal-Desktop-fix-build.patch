@@ -1,18 +1,18 @@
-diff -Naur Signal-Desktop-7.16.0.old/package.json Signal-Desktop-7.16.0/package.json
---- Signal-Desktop-7.16.0.old/package.json	2024-07-18 13:33:51.991843334 +0200
-+++ Signal-Desktop-7.16.0/package.json	2024-07-18 13:33:52.172844302 +0200
-@@ -365,7 +365,7 @@
+diff -Naur Signal-Desktop-7.18.0.old/package.json Signal-Desktop-7.18.0/package.json
+--- Signal-Desktop-7.18.0.old/package.json	2024-08-04 20:16:03.844995853 +0200
++++ Signal-Desktop-7.18.0/package.json	2024-08-04 20:16:41.278261501 +0200
+@@ -369,7 +369,7 @@
      }
    },
    "engines": {
--    "node": "20.11.1"
+-    "node": "20.15.1"
 +    "node": ">= 20"
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
-diff -Naur Signal-Desktop-7.16.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-7.16.0/ts/scripts/get-expire-time.ts
---- Signal-Desktop-7.16.0.old/ts/scripts/get-expire-time.ts	2024-07-18 13:33:52.087843847 +0200
-+++ Signal-Desktop-7.16.0/ts/scripts/get-expire-time.ts	2024-07-18 13:33:52.172844302 +0200
+diff -Naur Signal-Desktop-7.18.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-7.18.0/ts/scripts/get-expire-time.ts
+--- Signal-Desktop-7.18.0.old/ts/scripts/get-expire-time.ts	2024-08-04 20:16:03.947996584 +0200
++++ Signal-Desktop-7.18.0/ts/scripts/get-expire-time.ts	2024-08-04 20:17:08.158452257 +0200
 @@ -9,7 +9,7 @@
  
  const unixTimestamp = parseInt(
