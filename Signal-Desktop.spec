@@ -43,6 +43,9 @@ BuildRequires:  libxcrypt-compat
 BuildRequires:  nodejs-npm
 %else
 BuildRequires:  npm
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(pangocairo)
+BuildRequires:  pkgconfig(pixman-1)
 %endif
 
 Requires:   libappindicator-gtk3
