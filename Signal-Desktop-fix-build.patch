@@ -10,6 +10,49 @@ diff -Naur Signal-Desktop-7.24.0.old/package.json Signal-Desktop-7.24.0/package.
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
+diff -Naur Signal-Desktop-7.24.0.old/patches/socks-proxy-agent+8.0.1.patch Signal-Desktop-7.24.0/patches/socks-proxy-agent+8.0.1.patch
+--- Signal-Desktop-7.24.0.old/patches/socks-proxy-agent+8.0.1.patch	2024-09-12 06:55:43.707034775 +0200
++++ Signal-Desktop-7.24.0/patches/socks-proxy-agent+8.0.1.patch	1970-01-01 01:00:00.000000000 +0100
+@@ -1,22 +0,0 @@
+-diff --git a/node_modules/socks-proxy-agent/dist/index.js b/node_modules/socks-proxy-agent/dist/index.js
+-index 8189e01..e2dedf8 100644
+---- a/node_modules/socks-proxy-agent/dist/index.js
+-+++ b/node_modules/socks-proxy-agent/dist/index.js
+-@@ -33,6 +33,7 @@ const debug_1 = __importDefault(require("debug"));
+- const dns = __importStar(require("dns"));
+- const net = __importStar(require("net"));
+- const tls = __importStar(require("tls"));
+-+const { URL } = __importStar(require("url"));
+- const debug = (0, debug_1.default)('socks-proxy-agent');
+- function parseSocksURL(url) {
+-     let lookup = false;
+-@@ -127,6 +128,9 @@ class SocksProxyAgent extends agent_base_1.Agent {
+-             },
+-             command: 'connect',
+-             timeout: timeout ?? undefined,
+-+            socket_options: {
+-+                lookup: lookupFn,
+-+            },
+-         };
+-         const cleanup = (tlsSocket) => {
+-             req.destroy();
+diff -Naur Signal-Desktop-7.24.0.old/patches/@types+express+4.17.18.patch Signal-Desktop-7.24.0/patches/@types+express+4.17.18.patch
+--- Signal-Desktop-7.24.0.old/patches/@types+express+4.17.18.patch	2024-09-12 06:55:43.706034763 +0200
++++ Signal-Desktop-7.24.0/patches/@types+express+4.17.18.patch	1970-01-01 01:00:00.000000000 +0100
+@@ -1,13 +0,0 @@
+-diff --git a/node_modules/@types/express/index.d.ts b/node_modules/@types/express/index.d.ts
+-index 8427f02..2b4698f 100755
+---- a/node_modules/@types/express/index.d.ts
+-+++ b/node_modules/@types/express/index.d.ts
+-@@ -55,7 +55,7 @@ declare namespace e {
+-     /**
+-      * This is a built-in middleware function in Express. It serves static files and is based on serve-static.
+-      */
+--    var static: serveStatic.RequestHandlerConstructor<Response>;
+-+    var static: unknown;
+- 
+-     /**
+-      * This is a built-in middleware function in Express. It parses incoming requests with urlencoded payloads and is based on body-parser.
 diff -Naur Signal-Desktop-7.24.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-7.24.0/ts/scripts/get-expire-time.ts
 --- Signal-Desktop-7.24.0.old/ts/scripts/get-expire-time.ts	2024-09-12 06:55:43.741035179 +0200
 +++ Signal-Desktop-7.24.0/ts/scripts/get-expire-time.ts	2024-09-12 06:55:55.744178855 +0200
