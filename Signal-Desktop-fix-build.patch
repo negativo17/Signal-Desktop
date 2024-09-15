@@ -1,6 +1,6 @@
-diff -Naur Signal-Desktop-7.24.0.old/package.json Signal-Desktop-7.24.0/package.json
---- Signal-Desktop-7.24.0.old/package.json	2024-09-12 06:55:43.706034763 +0200
-+++ Signal-Desktop-7.24.0/package.json	2024-09-12 06:56:27.098554161 +0200
+diff -Naur Signal-Desktop-7.24.1.old/package.json Signal-Desktop-7.24.1/package.json
+--- Signal-Desktop-7.24.1.old/package.json	2024-09-15 18:02:18.843257578 +0200
++++ Signal-Desktop-7.24.1/package.json	2024-09-15 18:02:19.013258580 +0200
 @@ -367,7 +367,7 @@
      }
    },
@@ -10,9 +10,9 @@ diff -Naur Signal-Desktop-7.24.0.old/package.json Signal-Desktop-7.24.0/package.
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
-diff -Naur Signal-Desktop-7.24.0.old/patches/socks-proxy-agent+8.0.1.patch Signal-Desktop-7.24.0/patches/socks-proxy-agent+8.0.1.patch
---- Signal-Desktop-7.24.0.old/patches/socks-proxy-agent+8.0.1.patch	2024-09-12 06:55:43.707034775 +0200
-+++ Signal-Desktop-7.24.0/patches/socks-proxy-agent+8.0.1.patch	1970-01-01 01:00:00.000000000 +0100
+diff -Naur Signal-Desktop-7.24.1.old/patches/socks-proxy-agent+8.0.1.patch Signal-Desktop-7.24.1/patches/socks-proxy-agent+8.0.1.patch
+--- Signal-Desktop-7.24.1.old/patches/socks-proxy-agent+8.0.1.patch	2024-09-15 18:02:18.846257596 +0200
++++ Signal-Desktop-7.24.1/patches/socks-proxy-agent+8.0.1.patch	1970-01-01 01:00:00.000000000 +0100
 @@ -1,22 +0,0 @@
 -diff --git a/node_modules/socks-proxy-agent/dist/index.js b/node_modules/socks-proxy-agent/dist/index.js
 -index 8189e01..e2dedf8 100644
@@ -36,9 +36,9 @@ diff -Naur Signal-Desktop-7.24.0.old/patches/socks-proxy-agent+8.0.1.patch Signa
 -         };
 -         const cleanup = (tlsSocket) => {
 -             req.destroy();
-diff -Naur Signal-Desktop-7.24.0.old/patches/@types+express+4.17.18.patch Signal-Desktop-7.24.0/patches/@types+express+4.17.18.patch
---- Signal-Desktop-7.24.0.old/patches/@types+express+4.17.18.patch	2024-09-12 06:55:43.706034763 +0200
-+++ Signal-Desktop-7.24.0/patches/@types+express+4.17.18.patch	1970-01-01 01:00:00.000000000 +0100
+diff -Naur Signal-Desktop-7.24.1.old/patches/@types+express+4.17.18.patch Signal-Desktop-7.24.1/patches/@types+express+4.17.18.patch
+--- Signal-Desktop-7.24.1.old/patches/@types+express+4.17.18.patch	2024-09-15 18:02:18.844257584 +0200
++++ Signal-Desktop-7.24.1/patches/@types+express+4.17.18.patch	1970-01-01 01:00:00.000000000 +0100
 @@ -1,13 +0,0 @@
 -diff --git a/node_modules/@types/express/index.d.ts b/node_modules/@types/express/index.d.ts
 -index 8427f02..2b4698f 100755
@@ -53,9 +53,9 @@ diff -Naur Signal-Desktop-7.24.0.old/patches/@types+express+4.17.18.patch Signal
 - 
 -     /**
 -      * This is a built-in middleware function in Express. It parses incoming requests with urlencoded payloads and is based on body-parser.
-diff -Naur Signal-Desktop-7.24.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-7.24.0/ts/scripts/get-expire-time.ts
---- Signal-Desktop-7.24.0.old/ts/scripts/get-expire-time.ts	2024-09-12 06:55:43.741035179 +0200
-+++ Signal-Desktop-7.24.0/ts/scripts/get-expire-time.ts	2024-09-12 06:55:55.744178855 +0200
+diff -Naur Signal-Desktop-7.24.1.old/ts/scripts/get-expire-time.ts Signal-Desktop-7.24.1/ts/scripts/get-expire-time.ts
+--- Signal-Desktop-7.24.1.old/ts/scripts/get-expire-time.ts	2024-09-15 18:02:18.931258097 +0200
++++ Signal-Desktop-7.24.1/ts/scripts/get-expire-time.ts	2024-09-15 18:02:19.013258580 +0200
 @@ -9,7 +9,7 @@
  
  const unixTimestamp = parseInt(
