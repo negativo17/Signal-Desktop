@@ -16,7 +16,7 @@
 %global desktop_id org.signal.Signal
 
 Name:       Signal-Desktop
-Version:    7.29.0
+Version:    7.30.0
 Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
@@ -34,12 +34,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  git-lfs
 BuildRequires:  libappstream-glib
+BuildRequires:  libxcrypt-compat
 BuildRequires:  lzo
 BuildRequires:  python3
-BuildRequires:  yarnpkg
 
 %if 0%{?fedora}
-BuildRequires:  libxcrypt-compat
 BuildRequires:  nodejs-npm
 %else
 BuildRequires:  npm
@@ -69,12 +68,15 @@ iOS.
 %autosetup -p1 -n %{name}-%{version}%{?beta:-%{beta}}
 
 %build
-mkdir -p .config/yarn/global
-mv .yarnclean .config/yarn/global
-# Use a huge timeout for aarch64 builds
-yarn install --frozen-lockfile --network-timeout 1000000
-yarn generate
-yarn build:release --dir
+npm install
+npm run clean-transpile
+cd sticker-creator
+npm install
+npm run build
+cd ..
+npm run generate
+npm run prepare-beta-build
+npm run build-linux
 
 # Remove non-relevant binaries
 pushd release/linux-*unpacked/
@@ -132,6 +134,10 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 %{_libdir}/%{name}
 
 %changelog
+* Fri Oct 25 2024 Simone Caronni <negativo17@gmail.com> - 7.30.0-1
+- Update to 7.30.0.
+- Change the way it's built, drop yarn.
+
 * Wed Oct 23 2024 Simone Caronni <negativo17@gmail.com> - 7.29.0-1
 - Update to 7.29.0.
 
