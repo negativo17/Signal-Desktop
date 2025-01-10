@@ -1,7 +1,7 @@
-diff -Naur Signal-Desktop-7.36.1.old/package.json Signal-Desktop-7.36.1/package.json
---- Signal-Desktop-7.36.1.old/package.json	2024-12-20 14:01:40.085212297 +0100
-+++ Signal-Desktop-7.36.1/package.json	2024-12-20 14:01:40.254213301 +0100
-@@ -82,7 +82,7 @@
+diff -Naur Signal-Desktop-7.37.0.old/package.json Signal-Desktop-7.37.0/package.json
+--- Signal-Desktop-7.37.0.old/package.json	2025-01-10 16:28:05.911960364 +0100
++++ Signal-Desktop-7.37.0/package.json	2025-01-10 16:28:06.078961490 +0100
+@@ -84,7 +84,7 @@
      "build:esbuild": "node scripts/esbuild.js",
      "build:esbuild:prod": "node scripts/esbuild.js --prod",
      "build:electron": "electron-builder --config.extraMetadata.environment=$SIGNAL_ENV",
@@ -10,18 +10,18 @@ diff -Naur Signal-Desktop-7.36.1.old/package.json Signal-Desktop-7.36.1/package.
      "build:release-win32-all": "npm run build:release -- --arm64 --x64",
      "build:preload-cache": "node ts/scripts/generate-preload-cache.js",
      "verify": "run-p --print-label verify:*",
-@@ -354,7 +354,7 @@
+@@ -356,7 +356,7 @@
      }
    },
    "engines": {
--    "node": "20.18.0"
+-    "node": "20.18.1"
 +    "node": ">= 20"
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
-diff -Naur Signal-Desktop-7.36.1.old/ts/scripts/get-expire-time.ts Signal-Desktop-7.36.1/ts/scripts/get-expire-time.ts
---- Signal-Desktop-7.36.1.old/ts/scripts/get-expire-time.ts	2024-12-20 14:01:40.172212814 +0100
-+++ Signal-Desktop-7.36.1/ts/scripts/get-expire-time.ts	2024-12-20 14:01:40.255213307 +0100
+diff -Naur Signal-Desktop-7.37.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-7.37.0/ts/scripts/get-expire-time.ts
+--- Signal-Desktop-7.37.0.old/ts/scripts/get-expire-time.ts	2025-01-10 16:28:05.996960937 +0100
++++ Signal-Desktop-7.37.0/ts/scripts/get-expire-time.ts	2025-01-10 16:28:06.078961490 +0100
 @@ -9,7 +9,7 @@
  
  const unixTimestamp = parseInt(
