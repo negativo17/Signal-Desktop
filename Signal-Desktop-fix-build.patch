@@ -1,27 +1,27 @@
-diff -Naur Signal-Desktop-7.44.0.old/package.json Signal-Desktop-7.44.0/package.json
---- Signal-Desktop-7.44.0.old/package.json	2025-02-28 13:48:30.991327746 +0100
-+++ Signal-Desktop-7.44.0/package.json	2025-02-28 13:48:31.172577120 +0100
+diff -Naur Signal-Desktop-7.45.0.old/package.json Signal-Desktop-7.45.0/package.json
+--- Signal-Desktop-7.45.0.old/package.json	2025-03-05 21:44:08.980993626 +0100
++++ Signal-Desktop-7.45.0/package.json	2025-03-05 21:45:50.911870894 +0100
 @@ -87,7 +87,7 @@
      "build:esbuild": "node scripts/esbuild.js",
      "build:esbuild:prod": "node scripts/esbuild.js --prod",
      "build:electron": "electron-builder --config.extraMetadata.environment=$SIGNAL_ENV",
--    "build:release": "cross-env SIGNAL_ENV=production npm run build:electron -- --config.directories.output=release",
-+    "build:release": "cross-env SIGNAL_ENV=production npm run build:electron -- --config.directories.output=release --dir",
-     "build:release-win32-all": "npm run build:release -- --arm64 --x64",
+-    "build:release": "cross-env SIGNAL_ENV=production pnpm run build:electron --config.directories.output=release",
++    "build:release": "cross-env SIGNAL_ENV=production pnpm run build:electron --config.directories.output=release --dir",
+     "build:release-win32-all": "pnpm run build:release --arm64 --x64",
      "build:preload-cache": "node ts/scripts/generate-preload-cache.js",
      "verify": "run-p --print-label verify:*",
-@@ -360,7 +360,7 @@
-     }
+@@ -393,7 +393,7 @@
+     ]
    },
    "engines": {
--    "node": "20.18.1"
+-    "node": "20.18.2"
 +    "node": ">= 20"
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
-diff -Naur Signal-Desktop-7.44.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-7.44.0/ts/scripts/get-expire-time.ts
---- Signal-Desktop-7.44.0.old/ts/scripts/get-expire-time.ts	2025-02-28 13:48:31.082916115 +0100
-+++ Signal-Desktop-7.44.0/ts/scripts/get-expire-time.ts	2025-02-28 13:48:31.173064037 +0100
+diff -Naur Signal-Desktop-7.45.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-7.45.0/ts/scripts/get-expire-time.ts
+--- Signal-Desktop-7.45.0.old/ts/scripts/get-expire-time.ts	2025-03-05 21:44:09.015914910 +0100
++++ Signal-Desktop-7.45.0/ts/scripts/get-expire-time.ts	2025-03-05 21:44:37.725821006 +0100
 @@ -11,7 +11,7 @@
  
  const unixTimestamp = parseInt(
