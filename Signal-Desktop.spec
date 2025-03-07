@@ -36,16 +36,11 @@ BuildRequires:  git-lfs
 BuildRequires:  libappstream-glib
 BuildRequires:  libxcrypt-compat
 BuildRequires:  lzo
-BuildRequires:  python3
-
-%if 0%{?fedora}
-BuildRequires:  nodejs-npm
-%else
 BuildRequires:  npm
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(pixman-1)
-%endif
+BuildRequires:  python3
 
 Requires:   libappindicator-gtk3
 Requires:   libnotify
@@ -68,15 +63,23 @@ iOS.
 %autosetup -p1 -n %{name}-%{version}%{?beta:-%{beta}}
 
 %build
-npm install
-npm run clean-transpile
+mkdir -p ~/.local/bin
+export PATH=$HOME/.local/bin/:$PATH
+
+npm config set prefix '~/.local/'
+
+PATH="$npm_global/bin:$PATH"
+npm install -g pnpm@latest-10
+
+pnpm install
+pnpm run clean-transpile
 cd sticker-creator
-npm install
-npm run build
+pnpm install
+pnpm run build
 cd ..
-npm run generate
-npm run prepare-beta-build
-npm run build-linux
+pnpm run generate
+pnpm run prepare-beta-build
+pnpm run build-linux
 
 # Remove non-relevant binaries
 rm -fr release/linux-unpacked/chrome_*.pak \
@@ -127,6 +130,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 * Wed Mar 05 2025 Simone Caronni <negativo17@gmail.com> - 7.45.0-1
 - Update to 7.45.0.
 - Trim changelog.
+- Signal has switched to pnpm in place of npm.
 
 * Fri Feb 28 2025 Simone Caronni <negativo17@gmail.com> - 7.44.0-1
 - Update to 7.44.0.
