@@ -1,7 +1,7 @@
-diff -Naur Signal-Desktop-7.47.0.old/package.json Signal-Desktop-7.47.0/package.json
---- Signal-Desktop-7.47.0.old/package.json	2025-03-21 18:11:50.700404153 +0100
-+++ Signal-Desktop-7.47.0/package.json	2025-03-21 18:11:50.917441879 +0100
-@@ -87,7 +87,7 @@
+diff -Naur Signal-Desktop-7.48.0.old/package.json Signal-Desktop-7.48.0/package.json
+--- Signal-Desktop-7.48.0.old/package.json	2025-03-31 09:43:43.715410916 +0200
++++ Signal-Desktop-7.48.0/package.json	2025-03-31 09:44:42.926828270 +0200
+@@ -88,7 +88,7 @@
      "build:esbuild": "node scripts/esbuild.js",
      "build:esbuild:prod": "node scripts/esbuild.js --prod",
      "build:electron": "electron-builder --config.extraMetadata.environment=$SIGNAL_ENV",
@@ -10,18 +10,18 @@ diff -Naur Signal-Desktop-7.47.0.old/package.json Signal-Desktop-7.47.0/package.
      "build:release-win32-all": "pnpm run build:release --arm64 --x64",
      "build:preload-cache": "node ts/scripts/generate-preload-cache.js",
      "build:emoji": "run-p build:emoji:32 build:emoji:64",
-@@ -401,7 +401,7 @@
+@@ -404,7 +404,7 @@
      ]
    },
    "engines": {
--    "node": "20.18.2"
-+    "node": ">= 20"
+-    "node": "22.14.0"
++    "node": ">= 22"
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
-diff -Naur Signal-Desktop-7.47.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-7.47.0/ts/scripts/get-expire-time.ts
---- Signal-Desktop-7.47.0.old/ts/scripts/get-expire-time.ts	2025-03-21 18:11:50.813406182 +0100
-+++ Signal-Desktop-7.47.0/ts/scripts/get-expire-time.ts	2025-03-21 18:11:50.917620867 +0100
+diff -Naur Signal-Desktop-7.48.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-7.48.0/ts/scripts/get-expire-time.ts
+--- Signal-Desktop-7.48.0.old/ts/scripts/get-expire-time.ts	2025-03-31 09:43:43.767222682 +0200
++++ Signal-Desktop-7.48.0/ts/scripts/get-expire-time.ts	2025-03-31 09:44:11.672473641 +0200
 @@ -11,7 +11,7 @@
  
  const unixTimestamp = parseInt(
