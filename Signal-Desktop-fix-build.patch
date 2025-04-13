@@ -1,6 +1,6 @@
-diff -Naur Signal-Desktop-7.49.0.old/package.json Signal-Desktop-7.49.0/package.json
---- Signal-Desktop-7.49.0.old/package.json	2025-04-03 09:57:14.364062092 +0200
-+++ Signal-Desktop-7.49.0/package.json	2025-04-03 09:57:14.561518917 +0200
+diff -Naur Signal-Desktop-7.50.0.old/package.json Signal-Desktop-7.50.0/package.json
+--- Signal-Desktop-7.50.0.old/package.json	2025-04-13 22:29:04.535967892 +0200
++++ Signal-Desktop-7.50.0/package.json	2025-04-13 22:29:04.744915019 +0200
 @@ -88,7 +88,7 @@
      "build:esbuild": "node scripts/esbuild.js",
      "build:esbuild:prod": "node scripts/esbuild.js --prod",
@@ -10,7 +10,7 @@ diff -Naur Signal-Desktop-7.49.0.old/package.json Signal-Desktop-7.49.0/package.
      "build:release-win32-all": "pnpm run build:release --arm64 --x64",
      "build:preload-cache": "node ts/scripts/generate-preload-cache.js",
      "build:emoji": "run-p build:emoji:32 build:emoji:64",
-@@ -402,7 +402,7 @@
+@@ -404,7 +404,7 @@
      ]
    },
    "engines": {
@@ -19,9 +19,9 @@ diff -Naur Signal-Desktop-7.49.0.old/package.json Signal-Desktop-7.49.0/package.
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
-diff -Naur Signal-Desktop-7.49.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-7.49.0/ts/scripts/get-expire-time.ts
---- Signal-Desktop-7.49.0.old/ts/scripts/get-expire-time.ts	2025-04-03 09:57:14.467104854 +0200
-+++ Signal-Desktop-7.49.0/ts/scripts/get-expire-time.ts	2025-04-03 09:57:14.561840262 +0200
+diff -Naur Signal-Desktop-7.50.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-7.50.0/ts/scripts/get-expire-time.ts
+--- Signal-Desktop-7.50.0.old/ts/scripts/get-expire-time.ts	2025-04-13 22:29:04.644968880 +0200
++++ Signal-Desktop-7.50.0/ts/scripts/get-expire-time.ts	2025-04-13 22:29:04.745118081 +0200
 @@ -11,7 +11,7 @@
  
  const unixTimestamp = parseInt(
