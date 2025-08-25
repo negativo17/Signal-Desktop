@@ -1,5 +1,5 @@
 # mock configuration:
-# - Requires network for running yarn/electron build
+# - Requires network for running npm/electron build
 
 %global debug_package %{nil}
 # Build id links are sometimes in conflict with other RPMs.
@@ -17,7 +17,7 @@
 
 Name:       Signal-Desktop
 Version:    7.67.0
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
 URL:        https://signal.org/
@@ -81,11 +81,6 @@ pnpm run generate
 pnpm run prepare-beta-build
 pnpm run build-linux
 
-# Remove non-relevant binaries
-rm -fr release/linux-unpacked/chrome_*.pak \
-    crelease/linux-unpacked/hrome-sandbox \
-    release/linux-unpacked/swiftshader
-
 %install
 # Main files
 install -dm 755 %{buildroot}%{_libdir}/%{name}
@@ -127,6 +122,10 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 %{_libdir}/%{name}
 
 %changelog
+* Mon Aug 25 2025 Simone Caronni <negativo17@gmail.com> - 7.67.0-2
+- Install again electron bundles.
+- Fix wrapper (thanks Nerijus Baliūnas).
+
 * Fri Aug 22 2025 Simone Caronni <negativo17@gmail.com> - 7.67.0-1
 - Update to 7.67.0.
 
