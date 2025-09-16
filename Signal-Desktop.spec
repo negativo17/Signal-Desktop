@@ -17,7 +17,7 @@
 
 Name:       Signal-Desktop
 Version:    7.70.0
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
 URL:        https://signal.org/
@@ -122,6 +122,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 %{_libdir}/%{name}
 
 %changelog
+* Tue Sep 16 2025 Simone Caronni <negativo17@gmail.com> - 7.70.0-2
+- Restore the main executable name that was changed for one releaso only.
+
 * Mon Sep 15 2025 Simone Caronni <negativo17@gmail.com> - 7.70.0-1
 - Update to 7.70.0.
 
