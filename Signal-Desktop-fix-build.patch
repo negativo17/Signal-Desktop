@@ -1,6 +1,6 @@
-diff -Naur Signal-Desktop-7.74.0.old/package.json Signal-Desktop-7.74.0/package.json
---- Signal-Desktop-7.74.0.old/package.json	2025-10-14 17:29:54.942839855 +0200
-+++ Signal-Desktop-7.74.0/package.json	2025-10-14 17:29:55.587848059 +0200
+diff -Naur Signal-Desktop-7.75.0.old/package.json Signal-Desktop-7.75.0/package.json
+--- Signal-Desktop-7.75.0.old/package.json	2025-10-16 11:04:51.078226535 +0200
++++ Signal-Desktop-7.75.0/package.json	2025-10-16 11:04:51.380645119 +0200
 @@ -97,7 +97,7 @@
      "build:styles:sass": "sass stylesheets/manifest.scss:stylesheets/manifest.css stylesheets/manifest_bridge.scss:stylesheets/manifest_bridge.css --fatal-deprecation=1.80.7",
      "build:styles:tailwind": "tailwindcss -i ./stylesheets/tailwind-config.css -o ./stylesheets/tailwind.css",
@@ -19,9 +19,9 @@ diff -Naur Signal-Desktop-7.74.0.old/package.json Signal-Desktop-7.74.0/package.
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
-diff -Naur Signal-Desktop-7.74.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-7.74.0/ts/scripts/get-expire-time.ts
---- Signal-Desktop-7.74.0.old/ts/scripts/get-expire-time.ts	2025-10-14 17:29:55.293844320 +0200
-+++ Signal-Desktop-7.74.0/ts/scripts/get-expire-time.ts	2025-10-14 17:29:55.589218068 +0200
+diff -Naur Signal-Desktop-7.75.0.old/ts/scripts/get-expire-time.ts Signal-Desktop-7.75.0/ts/scripts/get-expire-time.ts
+--- Signal-Desktop-7.75.0.old/ts/scripts/get-expire-time.ts	2025-10-16 11:04:51.229228408 +0200
++++ Signal-Desktop-7.75.0/ts/scripts/get-expire-time.ts	2025-10-16 11:04:51.381241833 +0200
 @@ -11,7 +11,7 @@
  
  const unixTimestamp = parseInt(
