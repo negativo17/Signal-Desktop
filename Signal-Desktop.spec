@@ -16,7 +16,7 @@
 %global desktop_id org.signal.Signal
 
 Name:       Signal-Desktop
-Version:    7.76.0
+Version:    7.77.0
 Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
@@ -122,6 +122,10 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 %{_libdir}/%{name}
 
 %changelog
+* Thu Oct 30 2025 Simone Caronni <negativo17@gmail.com> - 7.77.0-1
+- Update to 7.77.0.
+- Trim changelog.
+
 * Thu Oct 23 2025 Simone Caronni <negativo17@gmail.com> - 7.76.0-1
 - Update to 7.76.0.
 
@@ -209,51 +213,3 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 
 * Wed May 07 2025 Simone Caronni <negativo17@gmail.com> - 7.53.0-1
 - Update to 7.53.0.
-
-* Thu Apr 24 2025 Simone Caronni <negativo17@gmail.com> - 7.52.0-1
-- Update to 7.52.0.
-
-* Sun Apr 13 2025 Simone Caronni <negativo17@gmail.com> - 7.50.0-1
-- Update to 7.50.0.
-
-* Thu Apr 03 2025 Simone Caronni <negativo17@gmail.com> - 7.49.0-1
-- Update to 7.49.0.
-
-* Mon Mar 31 2025 Simone Caronni <negativo17@gmail.com> - 7.48.0-1
-- Update to 7.48.0.
-- Require Node.js 22+.
-
-* Fri Mar 21 2025 Simone Caronni <negativo17@gmail.com> - 7.47.0-1
-- Update to 7.47.0.
-
-* Sat Mar 08 2025 Simone Caronni <negativo17@gmail.com> - 7.45.1-1
-- Update to 7.45.1.
-
-* Wed Mar 05 2025 Simone Caronni <negativo17@gmail.com> - 7.45.0-1
-- Update to 7.45.0.
-- Trim changelog.
-- Signal has switched to pnpm in place of npm.
-
-* Fri Feb 28 2025 Simone Caronni <negativo17@gmail.com> - 7.44.0-1
-- Update to 7.44.0.
-
-* Sat Feb 22 2025 Simone Caronni <negativo17@gmail.com> - 7.43.0-1
-- Update to 7.43.0.
-
-* Thu Feb 13 2025 Simone Caronni <negativo17@gmail.com> - 7.42.0-1
-- Update to 7.42.0.
-
-* Sat Feb 08 2025 Simone Caronni <negativo17@gmail.com> - 7.41.0-1
-- Update to 7.41.0.
-
-* Tue Feb 04 2025 Simone Caronni <negativo17@gmail.com> - 7.40.1-1
-- Update to 7.40.1.
-
-* Tue Jan 28 2025 Simone Caronni <negativo17@gmail.com> - 7.39.0-1
-- Update to 7.39.0.
-
-* Sun Jan 19 2025 Simone Caronni <negativo17@gmail.com> - 7.38.0-1
-- Update to 7.38.0.
-
-* Fri Jan 10 2025 Simone Caronni <negativo17@gmail.com> - 7.37.0-1
-- Update to 7.37.0.
