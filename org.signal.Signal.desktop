@@ -8,3 +8,4 @@ Exec=signal-desktop --use-tray-icon
 Categories=Network
 StartupNotify=true
 MimeType=x-scheme-handler/sgnl;
+StartupWMClass=signal
