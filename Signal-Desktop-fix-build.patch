@@ -1,6 +1,6 @@
-diff -Naur Signal-Desktop-7.84.0.old/package.json Signal-Desktop-7.84.0/package.json
---- Signal-Desktop-7.84.0.old/package.json	2026-01-09 11:42:35.876311827 +0100
-+++ Signal-Desktop-7.84.0/package.json	2026-01-09 11:42:36.091174500 +0100
+diff -Naur Signal-Desktop-7.85.0.old/package.json Signal-Desktop-7.85.0/package.json
+--- Signal-Desktop-7.85.0.old/package.json	2026-01-15 10:14:58.786603848 +0100
++++ Signal-Desktop-7.85.0/package.json	2026-01-15 10:14:59.013610997 +0100
 @@ -99,7 +99,7 @@
      "build:styles:sass": "sass stylesheets/manifest.scss:stylesheets/manifest.css stylesheets/manifest_bridge.scss:stylesheets/manifest_bridge.css --fatal-deprecation=1.80.7",
      "build:styles:tailwind": "tailwindcss -i ./stylesheets/tailwind-config.css -o ./stylesheets/tailwind.css",
@@ -10,7 +10,7 @@ diff -Naur Signal-Desktop-7.84.0.old/package.json Signal-Desktop-7.84.0/package.
      "build:release-win32-all": "pnpm run build:release --arm64 --x64",
      "build:preload-cache": "node ts/scripts/generate-preload-cache.node.js",
      "build:emoji": "run-p build:emoji:32 build:emoji:64",
-@@ -424,7 +424,7 @@
+@@ -427,7 +427,7 @@
      ]
    },
    "engines": {
@@ -19,9 +19,9 @@ diff -Naur Signal-Desktop-7.84.0.old/package.json Signal-Desktop-7.84.0/package.
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
-diff -Naur Signal-Desktop-7.84.0.old/ts/scripts/get-expire-time.node.ts Signal-Desktop-7.84.0/ts/scripts/get-expire-time.node.ts
---- Signal-Desktop-7.84.0.old/ts/scripts/get-expire-time.node.ts	2026-01-09 11:42:35.987312370 +0100
-+++ Signal-Desktop-7.84.0/ts/scripts/get-expire-time.node.ts	2026-01-09 11:42:36.091500975 +0100
+diff -Naur Signal-Desktop-7.85.0.old/ts/scripts/get-expire-time.node.ts Signal-Desktop-7.85.0/ts/scripts/get-expire-time.node.ts
+--- Signal-Desktop-7.85.0.old/ts/scripts/get-expire-time.node.ts	2026-01-15 10:14:58.907192102 +0100
++++ Signal-Desktop-7.85.0/ts/scripts/get-expire-time.node.ts	2026-01-15 10:14:59.013796716 +0100
 @@ -11,7 +11,7 @@
  
  const unixTimestamp = parseInt(
