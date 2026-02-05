@@ -36,7 +36,7 @@ BuildRequires:  git-lfs
 BuildRequires:  libappstream-glib
 BuildRequires:  libxcrypt-compat
 BuildRequires:  lzo
-BuildRequires:  npm
+BuildRequires:  pnpm
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(pixman-1)
@@ -44,9 +44,6 @@ BuildRequires:  python3
 
 Requires:   libappindicator-gtk3
 Requires:   libnotify
-
-Provides:   signal-desktop = %{version}-%{release}
-Obsoletes:  signal-desktop < %{version}-%{release}
 
 %description
 Millions of people use Signal every day for free and instantaneous communication
@@ -63,14 +60,6 @@ iOS.
 %autosetup -p1 -n %{name}-%{version}%{?beta:-%{beta}}
 
 %build
-mkdir -p ~/.local/bin
-export PATH=$HOME/.local/bin/:$PATH
-
-npm config set prefix '~/.local/'
-
-PATH="$npm_global/bin:$PATH"
-npm install -g pnpm@latest-10
-
 pnpm install
 pnpm run clean-transpile
 cd sticker-creator
@@ -105,9 +94,6 @@ install -m 0644 -D -p %{SOURCE2} %{buildroot}%{_datadir}/applications/%{desktop_
 
 # AppData file
 install -m 0644 -D -p %{SOURCE3} %{buildroot}%{_metainfodir}/%{desktop_id}.metainfo.xml
-%if 0%{?rhel}
-sed -i -e '/url type="contribute"/d' %{buildroot}%{_metainfodir}/%{desktop_id}.metainfo.xml
-%endif
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{desktop_id}.desktop
@@ -124,6 +110,8 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 %changelog
 * Thu Feb 05 2026 Simone Caronni <negativo17@gmail.com> - 7.88.0-1
 - Update to 7.88.0.
+- Use packaged pnpm.
+- SPEC file cleanup.
 
 * Mon Feb 02 2026 Simone Caronni <negativo17@gmail.com> - 7.87.0-1
 - Update to 7.87.0.
@@ -157,98 +145,3 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 
 * Sun Nov 09 2025 Simone Caronni <negativo17@gmail.com> - 7.78.0-1
 - Update to 7.78.0.
-
-* Fri Oct 31 2025 Simone Caronni <negativo17@gmail.com> - 7.77.1-1
-- Update to 7.77.1.
-
-* Thu Oct 30 2025 Simone Caronni <negativo17@gmail.com> - 7.77.0-1
-- Update to 7.77.0.
-- Trim changelog.
-
-* Thu Oct 23 2025 Simone Caronni <negativo17@gmail.com> - 7.76.0-1
-- Update to 7.76.0.
-
-* Fri Oct 17 2025 Simone Caronni <negativo17@gmail.com> - 7.75.1-1
-- Update to 7.75.1.
-
-* Thu Oct 16 2025 Simone Caronni <negativo17@gmail.com> - 7.75.0-1
-- Update to 7.75.0.
-
-* Tue Oct 14 2025 Simone Caronni <negativo17@gmail.com> - 7.74.0-1
-- Update to 7.74.0.
-
-* Tue Oct 07 2025 Simone Caronni <negativo17@gmail.com> - 7.73.0-1
-- Update to 7.73.0.
-
-* Mon Sep 29 2025 Simone Caronni <negativo17@gmail.com> - 7.72.1-1
-- Update to 7.72.1.
-
-* Thu Sep 25 2025 Simone Caronni <negativo17@gmail.com> - 7.72.0-1
-- Update to 7.72.0.
-
-* Mon Sep 22 2025 Simone Caronni <negativo17@gmail.com> - 7.71.0-1
-- Update to 7.71.0.
-
-* Tue Sep 16 2025 Simone Caronni <negativo17@gmail.com> - 7.70.0-2
-- Restore the main executable name that was changed for one releaso only.
-
-* Mon Sep 15 2025 Simone Caronni <negativo17@gmail.com> - 7.70.0-1
-- Update to 7.70.0.
-
-* Thu Sep 04 2025 Simone Caronni <negativo17@gmail.com> - 7.69.0-1
-- Update to 7.69.0.
-
-* Tue Sep 02 2025 Simone Caronni <negativo17@gmail.com> - 7.68.0-1
-- Update to 7.68.0.
-
-* Mon Aug 25 2025 Simone Caronni <negativo17@gmail.com> - 7.67.0-2
-- Install again electron bundles.
-- Fix wrapper (thanks Nerijus Baliūnas).
-
-* Fri Aug 22 2025 Simone Caronni <negativo17@gmail.com> - 7.67.0-1
-- Update to 7.67.0.
-
-* Fri Aug 15 2025 Simone Caronni <negativo17@gmail.com> - 7.66.0-1
-- Update to 7.66.0.
-
-* Thu Aug 07 2025 Simone Caronni <negativo17@gmail.com> - 7.65.0-1
-- Update to 7.65.0.
-
-* Fri Aug 01 2025 Simone Caronni <negativo17@gmail.com> - 7.64.0-1
-- Update to 7.64.0.
-
-* Wed Jul 23 2025 Simone Caronni <negativo17@gmail.com> - 7.63.0-1
-- Update to 7.63.0.
-
-* Fri Jul 18 2025 Simone Caronni <negativo17@gmail.com> - 7.62.0-1
-- Update to 7.62.0.
-
-* Thu Jul 10 2025 Simone Caronni <negativo17@gmail.com> - 7.61.0-1
-- Update to 7.61.0.
-
-* Thu Jul 03 2025 Simone Caronni <negativo17@gmail.com> - 7.60.0-1
-- Update to 7.60.0.
-
-* Thu Jun 26 2025 Simone Caronni <negativo17@gmail.com> - 7.59.0-1
-- Update to 7.59.0.
-
-* Thu Jun 19 2025 Simone Caronni <negativo17@gmail.com> - 7.58.0-1
-- Update to 7.58.0.
-
-* Tue Jun 17 2025 Simone Caronni <negativo17@gmail.com> - 7.57.0-1
-- Update to 7.57.0.
-
-* Mon Jun 09 2025 Simone Caronni <negativo17@gmail.com> - 7.56.1-1
-- Update to 7.56.1.
-
-* Thu May 29 2025 Simone Caronni <negativo17@gmail.com> - 7.56.0-1
-- Update to 7.56.0.
-
-* Thu May 22 2025 Simone Caronni <negativo17@gmail.com> - 7.55.0-1
-- Update to 7.55.0.
-
-* Wed May 14 2025 Simone Caronni <negativo17@gmail.com> - 7.54.0-1
-- Update to 7.54.0.
-
-* Wed May 07 2025 Simone Caronni <negativo17@gmail.com> - 7.53.0-1
-- Update to 7.53.0.
