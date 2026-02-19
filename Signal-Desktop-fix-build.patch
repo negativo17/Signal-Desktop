@@ -1,6 +1,6 @@
-diff -Naur Signal-Desktop-7.89.0.old/package.json Signal-Desktop-7.89.0/package.json
---- Signal-Desktop-7.89.0.old/package.json	2026-02-12 15:02:52.865572205 +0100
-+++ Signal-Desktop-7.89.0/package.json	2026-02-12 15:02:53.093849835 +0100
+diff -Naur Signal-Desktop-7.90.0.old/package.json Signal-Desktop-7.90.0/package.json
+--- Signal-Desktop-7.90.0.old/package.json	2026-02-19 11:14:28.023382339 +0100
++++ Signal-Desktop-7.90.0/package.json	2026-02-19 11:15:03.901530938 +0100
 @@ -99,7 +99,7 @@
      "build:styles:sass": "sass stylesheets/manifest.scss:stylesheets/manifest.css stylesheets/manifest_bridge.scss:stylesheets/manifest_bridge.css --fatal-deprecation=1.80.7",
      "build:styles:tailwind": "tailwindcss -i ./stylesheets/tailwind-config.css -o ./stylesheets/tailwind.css",
@@ -10,18 +10,18 @@ diff -Naur Signal-Desktop-7.89.0.old/package.json Signal-Desktop-7.89.0/package.
      "build:release-win32-all": "pnpm run build:release --arm64 --x64",
      "build:preload-cache": "node ts/scripts/generate-preload-cache.node.js",
      "build:emoji": "run-p build:emoji:32 build:emoji:64",
-@@ -421,7 +421,7 @@
+@@ -422,7 +422,7 @@
      ]
    },
    "engines": {
--    "node": "22.21.1"
+-    "node": "24.11.1"
 +    "node": ">= 22"
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
-diff -Naur Signal-Desktop-7.89.0.old/ts/scripts/get-expire-time.node.ts Signal-Desktop-7.89.0/ts/scripts/get-expire-time.node.ts
---- Signal-Desktop-7.89.0.old/ts/scripts/get-expire-time.node.ts	2026-02-12 15:02:52.984573765 +0100
-+++ Signal-Desktop-7.89.0/ts/scripts/get-expire-time.node.ts	2026-02-12 15:02:53.094061254 +0100
+diff -Naur Signal-Desktop-7.90.0.old/ts/scripts/get-expire-time.node.ts Signal-Desktop-7.90.0/ts/scripts/get-expire-time.node.ts
+--- Signal-Desktop-7.90.0.old/ts/scripts/get-expire-time.node.ts	2026-02-19 11:14:28.132427577 +0100
++++ Signal-Desktop-7.90.0/ts/scripts/get-expire-time.node.ts	2026-02-19 11:14:34.682175735 +0100
 @@ -11,7 +11,7 @@
  
  const unixTimestamp = parseInt(
