@@ -16,7 +16,7 @@
 %global desktop_id org.signal.Signal
 
 Name:       Signal-Desktop
-Version:    8.6.0
+Version:    8.6.1
 Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
@@ -108,6 +108,10 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 %{_libdir}/%{name}
 
 %changelog
+* Tue Apr 14 2026 Simone Caronni <negativo17@gmail.com> - 8.6.1-1
+- Update to 8.6.1.
+- Trim changelog.
+
 * Thu Apr 09 2026 Simone Caronni <negativo17@gmail.com> - 8.6.0-1
 - Update to 8.6.0.
 
@@ -134,47 +138,3 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 
 * Sun Mar 01 2026 Simone Caronni <negativo17@gmail.com> - 8.0.0-1
 - Update to 8.0.0.
-
-* Thu Feb 19 2026 Simone Caronni <negativo17@gmail.com> - 7.90.0-1
-- Update to 7.90.0.
-
-* Thu Feb 12 2026 Simone Caronni <negativo17@gmail.com> - 7.89.0-1
-- Update to 7.89.0.
-
-* Thu Feb 05 2026 Simone Caronni <negativo17@gmail.com> - 7.88.0-1
-- Update to 7.88.0.
-- Use packaged pnpm.
-- SPEC file cleanup.
-
-* Mon Feb 02 2026 Simone Caronni <negativo17@gmail.com> - 7.87.0-1
-- Update to 7.87.0.
-
-* Fri Jan 23 2026 Simone Caronni <negativo17@gmail.com> - 7.86.0-1
-- Update to 7.86.0.
-
-* Thu Jan 15 2026 Simone Caronni <negativo17@gmail.com> - 7.85.0-1
-- Update to 7.85.0.
-
-* Fri Jan 09 2026 Simone Caronni <negativo17@gmail.com> - 7.84.0-1
-- Update to 7.84.0.
-
-* Fri Dec 19 2025 Simone Caronni <negativo17@gmail.com> - 7.83.0-1
-- Update to 7.83.0.
-
-* Fri Dec 12 2025 Simone Caronni <negativo17@gmail.com> - 7.82.0-1
-- Update to 7.82.0.
-
-* Thu Dec 04 2025 Simone Caronni <negativo17@gmail.com> - 7.81.0-1
-- Update to 7.81.0.
-
-* Wed Nov 26 2025 Simone Caronni <negativo17@gmail.com> - 7.80.1-1
-- Update to 7.80.1.
-
-* Thu Nov 20 2025 Simone Caronni <negativo17@gmail.com> - 7.80.0-1
-- Update to 7.80.0.
-
-* Fri Nov 14 2025 Simone Caronni <negativo17@gmail.com> - 7.79.0-1
-- Update to 7.79.0.
-
-* Sun Nov 09 2025 Simone Caronni <negativo17@gmail.com> - 7.78.0-1
-- Update to 7.78.0.
