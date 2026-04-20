@@ -1,6 +1,6 @@
-diff -Naur Signal-Desktop-8.6.1.old/package.json Signal-Desktop-8.6.1/package.json
---- Signal-Desktop-8.6.1.old/package.json	2026-04-14 13:21:42.184050511 +0200
-+++ Signal-Desktop-8.6.1/package.json	2026-04-14 13:21:42.412964882 +0200
+diff -Naur Signal-Desktop-8.7.0.old/package.json Signal-Desktop-8.7.0/package.json
+--- Signal-Desktop-8.7.0.old/package.json	2026-04-18 08:31:54.895882643 +0200
++++ Signal-Desktop-8.7.0/package.json	2026-04-18 08:31:55.218245872 +0200
 @@ -98,7 +98,7 @@
      "build:styles:sass:prod": "pnpm run build:styles:sass --style=compressed",
      "build:styles:tailwind:prod": "pnpm run build:styles:tailwind --minify",
@@ -9,8 +9,8 @@ diff -Naur Signal-Desktop-8.6.1.old/package.json Signal-Desktop-8.6.1/package.js
 +    "build:release": "cross-env SIGNAL_ENV=production pnpm run build:electron --config.directories.output=release --dir",
      "build:mas-dev": "bash ./scripts/build-mas-dev.sh",
      "build:release-win32-all": "pnpm run build:release --arm64 --x64",
-     "build:preload-cache": "tsx ts/scripts/generate-preload-cache.node.ts",
-@@ -417,7 +417,7 @@
+     "build:preload-cache": "node scripts/generate-preload-cache.mjs",
+@@ -418,7 +418,7 @@
      ]
    },
    "engines": {
@@ -19,10 +19,10 @@ diff -Naur Signal-Desktop-8.6.1.old/package.json Signal-Desktop-8.6.1/package.js
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
-diff -Naur Signal-Desktop-8.6.1.old/ts/scripts/get-expire-time.node.ts Signal-Desktop-8.6.1/ts/scripts/get-expire-time.node.ts
---- Signal-Desktop-8.6.1.old/ts/scripts/get-expire-time.node.ts	2026-04-14 13:21:42.301051516 +0200
-+++ Signal-Desktop-8.6.1/ts/scripts/get-expire-time.node.ts	2026-04-14 13:21:42.413418317 +0200
-@@ -11,7 +11,7 @@
+diff -Naur Signal-Desktop-8.7.0.old/scripts/get-expire-time.mjs Signal-Desktop-8.7.0/scripts/get-expire-time.mjs
+--- Signal-Desktop-8.7.0.old/scripts/get-expire-time.mjs	2026-04-18 08:31:54.903882711 +0200
++++ Signal-Desktop-8.7.0/scripts/get-expire-time.mjs	2026-04-20 19:22:05.033706297 +0200
+@@ -10,7 +10,7 @@
  
  const unixTimestamp = parseInt(
    process.env.SOURCE_DATE_EPOCH ||
