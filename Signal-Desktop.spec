@@ -61,6 +61,10 @@ iOS.
 
 %build
 pnpm install
+# Workaround Fedora's V8 Intl.Segmenter.segment() crash by replacing rolldown's
+# segmenter with a polyfill (https://bugzilla.redhat.com/buglist.cgi?quicksearch=nodejs+icu).
+sed -i 's|globalThis\.Intl?\.Segmenter ? new Intl\.Segmenter() : { segment: (str) => str\.split("") }|{ segment: function*(str) { for (const c of str) yield { segment: c }; } }|' \
+    node_modules/.pnpm/rolldown@*/node_modules/rolldown/dist/shared/rolldown-build-*.mjs
 pnpm run clean-transpile
 cd sticker-creator
 pnpm install
@@ -110,6 +114,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 %changelog
 * Sat May 09 2026 Simone Caronni <negativo17@gmail.com> - 8.9.1-1
 - Update to 8.9.1.
+- Patch rolldown to skip Intl.Segmenter, which crashes V8.
 
 * Mon Apr 27 2026 Simone Caronni <negativo17@gmail.com> - 8.8.0-1
 - Update to 8.8.0.
