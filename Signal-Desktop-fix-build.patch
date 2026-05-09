@@ -1,7 +1,7 @@
-diff -Naur Signal-Desktop-8.8.0.old/package.json Signal-Desktop-8.8.0/package.json
---- Signal-Desktop-8.8.0.old/package.json	2026-04-27 18:38:40.838754815 +0200
-+++ Signal-Desktop-8.8.0/package.json	2026-04-27 18:38:41.067021547 +0200
-@@ -102,7 +102,7 @@
+diff -Naur Signal-Desktop-8.9.1.old/package.json Signal-Desktop-8.9.1/package.json
+--- Signal-Desktop-8.9.1.old/package.json	2026-05-09 10:32:11.858750966 +0200
++++ Signal-Desktop-8.9.1/package.json	2026-05-09 10:33:02.700084712 +0200
+@@ -101,7 +101,7 @@
      "build:styles:sass:prod": "pnpm run build:styles:sass --style=compressed",
      "build:styles:tailwind:prod": "pnpm run build:styles:tailwind --minify",
      "build:electron": "cross-env NODE_OPTIONS='--import=tsx' electron-builder --config.extraMetadata.environment=$SIGNAL_ENV",
@@ -10,18 +10,18 @@ diff -Naur Signal-Desktop-8.8.0.old/package.json Signal-Desktop-8.8.0/package.js
      "build:mas-dev": "bash ./scripts/build-mas-dev.sh",
      "build:release-win32-all": "pnpm run build:release --arm64 --x64",
      "build:preload-cache": "node scripts/generate-preload-cache.mjs",
-@@ -389,7 +389,7 @@
+@@ -382,7 +382,7 @@
      ]
    },
    "engines": {
--    "node": "24.14.0"
+-    "node": "24.15.0"
 +    "node": ">= 22"
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
-diff -Naur Signal-Desktop-8.8.0.old/scripts/get-expire-time.mjs Signal-Desktop-8.8.0/scripts/get-expire-time.mjs
---- Signal-Desktop-8.8.0.old/scripts/get-expire-time.mjs	2026-04-27 18:38:40.845754880 +0200
-+++ Signal-Desktop-8.8.0/scripts/get-expire-time.mjs	2026-04-27 18:38:41.067227355 +0200
+diff -Naur Signal-Desktop-8.9.1.old/scripts/get-expire-time.mjs Signal-Desktop-8.9.1/scripts/get-expire-time.mjs
+--- Signal-Desktop-8.9.1.old/scripts/get-expire-time.mjs	2026-05-09 10:32:11.865751045 +0200
++++ Signal-Desktop-8.9.1/scripts/get-expire-time.mjs	2026-05-09 10:32:25.917672417 +0200
 @@ -10,7 +10,7 @@
  
  const unixTimestamp = parseInt(
