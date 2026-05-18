@@ -16,7 +16,7 @@
 %global desktop_id org.signal.Signal
 
 Name:       Signal-Desktop
-Version:    8.9.1
+Version:    8.10.0
 Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
@@ -112,6 +112,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 %{_libdir}/%{name}
 
 %changelog
+* Mon May 18 2026 Simone Caronni <negativo17@gmail.com> - 8.10.0-1
+- Update to 8.10.0.
+
 * Sat May 09 2026 Simone Caronni <negativo17@gmail.com> - 8.9.1-1
 - Update to 8.9.1.
 - Patch rolldown to skip Intl.Segmenter, which crashes V8.
