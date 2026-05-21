@@ -1,6 +1,6 @@
-diff -Naur Signal-Desktop-8.10.0.old/package.json Signal-Desktop-8.10.0/package.json
---- Signal-Desktop-8.10.0.old/package.json	2026-05-18 11:23:08.221353257 +0200
-+++ Signal-Desktop-8.10.0/package.json	2026-05-18 11:23:08.439229429 +0200
+diff -Naur Signal-Desktop-8.11.0.old/package.json Signal-Desktop-8.11.0/package.json
+--- Signal-Desktop-8.11.0.old/package.json	2026-05-21 18:04:31.973712407 +0200
++++ Signal-Desktop-8.11.0/package.json	2026-05-21 18:04:32.208874455 +0200
 @@ -102,7 +102,7 @@
      "build:styles:sass:prod": "pnpm run build:styles:sass --style=compressed",
      "build:styles:tailwind:prod": "pnpm run build:styles:tailwind --minify",
@@ -10,7 +10,7 @@ diff -Naur Signal-Desktop-8.10.0.old/package.json Signal-Desktop-8.10.0/package.
      "build:mas-dev": "bash ./scripts/build-mas-dev.sh",
      "build:release-win32-all": "pnpm run build:release --arm64 --x64",
      "build:preload-cache": "node scripts/generate-preload-cache.mjs",
-@@ -384,7 +384,7 @@
+@@ -385,7 +385,7 @@
      ]
    },
    "engines": {
@@ -19,9 +19,9 @@ diff -Naur Signal-Desktop-8.10.0.old/package.json Signal-Desktop-8.10.0/package.
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
-diff -Naur Signal-Desktop-8.10.0.old/scripts/get-expire-time.mjs Signal-Desktop-8.10.0/scripts/get-expire-time.mjs
---- Signal-Desktop-8.10.0.old/scripts/get-expire-time.mjs	2026-05-18 11:23:08.231062845 +0200
-+++ Signal-Desktop-8.10.0/scripts/get-expire-time.mjs	2026-05-18 11:23:08.439415770 +0200
+diff -Naur Signal-Desktop-8.11.0.old/scripts/get-expire-time.mjs Signal-Desktop-8.11.0/scripts/get-expire-time.mjs
+--- Signal-Desktop-8.11.0.old/scripts/get-expire-time.mjs	2026-05-21 18:04:31.984712503 +0200
++++ Signal-Desktop-8.11.0/scripts/get-expire-time.mjs	2026-05-21 18:04:32.209088217 +0200
 @@ -10,7 +10,7 @@
  
  const unixTimestamp = parseInt(
