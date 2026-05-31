@@ -37,6 +37,7 @@ BuildRequires:  libappstream-glib
 BuildRequires:  libxcrypt-compat
 BuildRequires:  lzo
 BuildRequires:  pnpm
+BuildRequires:  pulseaudio-libs
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(pixman-1)
