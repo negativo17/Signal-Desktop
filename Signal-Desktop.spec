@@ -40,6 +40,7 @@ BuildRequires:  npm
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(pixman-1)
+BuildRequires:  pulseaudio-libs
 BuildRequires:  python3
 
 Requires:   libappindicator-gtk3
