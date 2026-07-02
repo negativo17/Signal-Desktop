@@ -16,7 +16,7 @@
 %global desktop_id org.signal.Signal
 
 Name:       Signal-Desktop
-Version:    8.15.0
+Version:    8.17.0
 Release:    1%{?dist}
 Summary:    Private messaging from your desktop
 License:    AGPLv3
@@ -69,9 +69,41 @@ npm config set prefix '~/.local/'
 PATH="$npm_global/bin:$PATH"
 npm install -g pnpm@latest-10
 
+# Workaround Fedora's V8 Intl.Segmenter.segment() crash
+# (https://bugzilla.redhat.com/buglist.cgi?quicksearch=nodejs+icu) by preloading
+# a polyfill into every build-time node process, including the electron-builder
+# tooling run from pnpm's install/postinstall scripts.
+cat > %{_builddir}/segmenter-polyfill.cjs <<'EOF'
+'use strict';
+class SegmenterPolyfill {
+  constructor(locales, options) {
+    this._granularity = (options && options.granularity) || 'grapheme';
+  }
+  resolvedOptions() {
+    return { locale: 'en', granularity: this._granularity };
+  }
+  segment(input) {
+    const str = String(input);
+    return {
+      [Symbol.iterator]: function* () {
+        let index = 0;
+        for (const ch of str) {
+          yield { segment: ch, index, input: str, isWordLike: /\w/.test(ch) };
+          index += ch.length;
+        }
+      },
+    };
+  }
+}
+if (typeof Intl !== 'undefined') {
+  Intl.Segmenter = SegmenterPolyfill;
+}
+EOF
+export NODE_OPTIONS="--require %{_builddir}/segmenter-polyfill.cjs"
+
 pnpm install
-# Workaround Fedora's V8 Intl.Segmenter.segment() crash by replacing rolldown's
-# segmenter with a polyfill (https://bugzilla.redhat.com/buglist.cgi?quicksearch=nodejs+icu).
+# The build:electron step resets NODE_OPTIONS via cross-env, dropping the
+# preload above, so rolldown still needs its own inline segmenter polyfill.
 sed -i 's|globalThis\.Intl?\.Segmenter ? new Intl\.Segmenter() : { segment: (str) => str\.split("") }|{ segment: function*(str) { for (const c of str) yield { segment: c }; } }|' \
     node_modules/.pnpm/rolldown@*/node_modules/rolldown/dist/shared/rolldown-build-*.mjs
 pnpm run clean-transpile
@@ -122,6 +154,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 %{_libdir}/%{name}
 
 %changelog
+* Thu Jul 02 2026 Simone Caronni <negativo17@gmail.com> - 8.17.0-1
+- Update to 8.17.0.
+
 * Fri Jun 19 2026 Simone Caronni <negativo17@gmail.com> - 8.15.0-1
 - Update to 8.15.0.
 

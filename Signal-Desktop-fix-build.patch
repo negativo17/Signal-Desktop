@@ -1,17 +1,17 @@
-diff -Naur Signal-Desktop-8.15.0.old/package.json Signal-Desktop-8.15.0/package.json
---- Signal-Desktop-8.15.0.old/package.json	2026-06-19 08:40:11.055498720 +0200
-+++ Signal-Desktop-8.15.0/package.json	2026-06-19 08:40:11.368197217 +0200
+diff -Naur Signal-Desktop-8.17.0.old/package.json Signal-Desktop-8.17.0/package.json
+--- Signal-Desktop-8.17.0.old/package.json	2026-07-02 14:25:51.550111930 +0200
++++ Signal-Desktop-8.17.0/package.json	2026-07-02 14:27:05.730680438 +0200
 @@ -104,7 +104,7 @@
      "build:styles:sass:prod": "pnpm run build:styles:sass --style=compressed",
      "build:styles:tailwind:prod": "pnpm run build:styles:tailwind --minify",
      "build:electron": "cross-env NODE_OPTIONS='--import=tsx' electron-builder --config.extraMetadata.environment=$SIGNAL_ENV",
 -    "build:release": "cross-env SIGNAL_ENV=production pnpm run build:electron --config.directories.output=release",
 +    "build:release": "cross-env SIGNAL_ENV=production pnpm run build:electron --config.directories.output=release --dir",
+     "build:release:mas": "pnpm run build:release --mac mas --universal",
      "build:mas-dev": "bash ./scripts/build-mas-dev.sh",
      "build:release-win32-all": "pnpm run build:release --arm64 --x64",
-     "build:preload-cache": "node scripts/generate-preload-cache.mjs",
-@@ -388,7 +388,7 @@
-     ]
+@@ -341,7 +341,7 @@
+     "zod": "4.3.6"
    },
    "engines": {
 -    "node": "24.15.0"
@@ -19,15 +19,15 @@ diff -Naur Signal-Desktop-8.15.0.old/package.json Signal-Desktop-8.15.0/package.
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
-diff -Naur Signal-Desktop-8.15.0.old/scripts/get-expire-time.mjs Signal-Desktop-8.15.0/scripts/get-expire-time.mjs
---- Signal-Desktop-8.15.0.old/scripts/get-expire-time.mjs	2026-06-19 08:40:11.067498831 +0200
-+++ Signal-Desktop-8.15.0/scripts/get-expire-time.mjs	2026-06-19 08:40:11.368374791 +0200
+diff -Naur Signal-Desktop-8.17.0.old/scripts/utils/getBuildCreationTimestamp.mjs Signal-Desktop-8.17.0/scripts/utils/getBuildCreationTimestamp.mjs
+--- Signal-Desktop-8.17.0.old/scripts/utils/getBuildCreationTimestamp.mjs	2026-07-02 14:25:51.565112071 +0200
++++ Signal-Desktop-8.17.0/scripts/utils/getBuildCreationTimestamp.mjs	2026-07-02 14:28:20.716314915 +0200
 @@ -10,7 +10,7 @@
- 
- const unixTimestamp = parseInt(
-   process.env.SOURCE_DATE_EPOCH ||
--    execSync('git show -s --format=%ct').toString('utf8'),
-+    execSync('date +%s').toString('utf8'),
-   10
- );
- const buildCreation = unixTimestamp * 1000;
+ export function getBuildCreationTimestamp() {
+   const unixTimestamp = parseInt(
+     process.env.SOURCE_DATE_EPOCH ||
+-      execSync('git show -s --format=%ct').toString('utf8'),
++      execSync('date +%s').toString('utf8'),
+     10
+   );
+   return unixTimestamp * SECOND;
