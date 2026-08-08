@@ -1,7 +1,7 @@
-diff -Naur Signal-Desktop-8.19.0.old/package.json Signal-Desktop-8.19.0/package.json
---- Signal-Desktop-8.19.0.old/package.json	2026-07-17 11:44:01.095451279 +0200
-+++ Signal-Desktop-8.19.0/package.json	2026-07-17 11:44:01.223718751 +0200
-@@ -104,7 +104,7 @@
+diff -Naur Signal-Desktop-8.22.0.old/package.json Signal-Desktop-8.22.0/package.json
+--- Signal-Desktop-8.22.0.old/package.json	2026-08-08 22:25:14.039842814 +0200
++++ Signal-Desktop-8.22.0/package.json	2026-08-08 22:25:59.958329731 +0200
+@@ -105,7 +105,7 @@
      "build:styles:sass:prod": "pnpm run build:styles:sass --style=compressed",
      "build:styles:tailwind:prod": "pnpm run build:styles:tailwind --minify",
      "build:electron": "cross-env NODE_OPTIONS='--import=tsx' electron-builder --config.extraMetadata.environment=$SIGNAL_ENV",
@@ -10,18 +10,18 @@ diff -Naur Signal-Desktop-8.19.0.old/package.json Signal-Desktop-8.19.0/package.
      "build:release:mas": "pnpm run build:release --mac mas --universal",
      "build:mas-dev": "bash ./scripts/build-mas-dev.sh",
      "build:release-win32-all": "pnpm run build:release --arm64 --x64",
-@@ -342,7 +342,7 @@
+@@ -347,7 +347,7 @@
      "zod": "4.3.6"
    },
    "engines": {
--    "node": "24.15.0"
+-    "node": "24.17.0"
 +    "node": ">= 22"
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
-diff -Naur Signal-Desktop-8.19.0.old/scripts/utils/getBuildCreationTimestamp.mjs Signal-Desktop-8.19.0/scripts/utils/getBuildCreationTimestamp.mjs
---- Signal-Desktop-8.19.0.old/scripts/utils/getBuildCreationTimestamp.mjs	2026-07-17 11:44:01.103851163 +0200
-+++ Signal-Desktop-8.19.0/scripts/utils/getBuildCreationTimestamp.mjs	2026-07-17 11:44:01.223947482 +0200
+diff -Naur Signal-Desktop-8.22.0.old/scripts/utils/getBuildCreationTimestamp.mjs Signal-Desktop-8.22.0/scripts/utils/getBuildCreationTimestamp.mjs
+--- Signal-Desktop-8.22.0.old/scripts/utils/getBuildCreationTimestamp.mjs	2026-08-08 22:25:14.047675090 +0200
++++ Signal-Desktop-8.22.0/scripts/utils/getBuildCreationTimestamp.mjs	2026-08-08 22:25:19.827802213 +0200
 @@ -10,7 +10,7 @@
  export function getBuildCreationTimestamp() {
    const unixTimestamp = parseInt(
