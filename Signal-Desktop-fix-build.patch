@@ -1,6 +1,6 @@
-diff -Naur Signal-Desktop-8.22.0.old/package.json Signal-Desktop-8.22.0/package.json
---- Signal-Desktop-8.22.0.old/package.json	2026-08-08 22:25:14.039842814 +0200
-+++ Signal-Desktop-8.22.0/package.json	2026-08-08 22:25:59.958329731 +0200
+diff -Naur Signal-Desktop-8.23.0.old/package.json Signal-Desktop-8.23.0/package.json
+--- Signal-Desktop-8.23.0.old/package.json	2026-08-14 18:02:54.494735428 +0200
++++ Signal-Desktop-8.23.0/package.json	2026-08-14 18:02:54.794122456 +0200
 @@ -105,7 +105,7 @@
      "build:styles:sass:prod": "pnpm run build:styles:sass --style=compressed",
      "build:styles:tailwind:prod": "pnpm run build:styles:tailwind --minify",
@@ -19,9 +19,9 @@ diff -Naur Signal-Desktop-8.22.0.old/package.json Signal-Desktop-8.22.0/package.
    },
    "build": {
      "appId": "org.whispersystems.signal-desktop",
-diff -Naur Signal-Desktop-8.22.0.old/scripts/utils/getBuildCreationTimestamp.mjs Signal-Desktop-8.22.0/scripts/utils/getBuildCreationTimestamp.mjs
---- Signal-Desktop-8.22.0.old/scripts/utils/getBuildCreationTimestamp.mjs	2026-08-08 22:25:14.047675090 +0200
-+++ Signal-Desktop-8.22.0/scripts/utils/getBuildCreationTimestamp.mjs	2026-08-08 22:25:19.827802213 +0200
+diff -Naur Signal-Desktop-8.23.0.old/scripts/utils/getBuildCreationTimestamp.mjs Signal-Desktop-8.23.0/scripts/utils/getBuildCreationTimestamp.mjs
+--- Signal-Desktop-8.23.0.old/scripts/utils/getBuildCreationTimestamp.mjs	2026-08-14 18:02:54.517528821 +0200
++++ Signal-Desktop-8.23.0/scripts/utils/getBuildCreationTimestamp.mjs	2026-08-14 18:02:54.794419255 +0200
 @@ -10,7 +10,7 @@
  export function getBuildCreationTimestamp() {
    const unixTimestamp = parseInt(
