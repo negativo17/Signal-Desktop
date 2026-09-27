@@ -65,13 +65,11 @@ iOS.
 %autosetup -p1 -n %{name}-%{version}%{?beta:-%{beta}}
 
 %build
-mkdir -p ~/.local/bin
 export PATH=$HOME/.local/bin/:$PATH
 
-npm config set prefix '~/.local/'
-
-PATH="$npm_global/bin:$PATH"
-npm install -g pnpm@latest-10
+# npm refuses to run in a directory whose package.json requires pnpm:
+pnpm_version=$(node -p 'require("./package.json").devEngines.packageManager.version')
+(cd ~ && npm install -g --prefix ~/.local pnpm@${pnpm_version})
 
 pnpm install
 pnpm run clean-transpile
@@ -124,6 +122,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{desktop_id}.
 %changelog
 * Sun Sep 27 2026 Simone Caronni <negativo17@gmail.com> - 8.28.0-1
 - Update to 8.28.0.
+- Fix build with npm 11.
 
 * Tue Sep 15 2026 Simone Caronni <negativo17@gmail.com> - 8.27.0-1
 - Update to 8.27.0.
