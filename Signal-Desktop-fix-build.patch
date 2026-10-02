@@ -1,7 +1,7 @@
-diff -Naur Signal-Desktop-8.28.0.old/package.json Signal-Desktop-8.28.0/package.json
---- Signal-Desktop-8.28.0.old/package.json	2026-09-27 13:28:19.708864405 +0200
-+++ Signal-Desktop-8.28.0/package.json	2026-09-27 13:28:51.126351971 +0200
-@@ -104,7 +104,7 @@
+diff -Naur Signal-Desktop-8.29.0.old/package.json Signal-Desktop-8.29.0/package.json
+--- Signal-Desktop-8.29.0.old/package.json	2026-10-02 12:17:47.222143763 +0200
++++ Signal-Desktop-8.29.0/package.json	2026-10-02 12:17:47.509989870 +0200
+@@ -103,7 +103,7 @@
      "build:styles:sass:prod": "pnpm run build:styles:sass --style=compressed",
      "build:styles:tailwind:prod": "pnpm run build:styles:tailwind --minify",
      "build:electron": "cross-env NODE_OPTIONS='--import=tsx' electron-builder --config.extraMetadata.environment=$SIGNAL_ENV",
@@ -19,9 +19,9 @@ diff -Naur Signal-Desktop-8.28.0.old/package.json Signal-Desktop-8.28.0/package.
    },
    "devEngines": {
      "runtime": {
-diff -Naur Signal-Desktop-8.28.0.old/scripts/utils/getBuildCreationTimestamp.mjs Signal-Desktop-8.28.0/scripts/utils/getBuildCreationTimestamp.mjs
---- Signal-Desktop-8.28.0.old/scripts/utils/getBuildCreationTimestamp.mjs	2026-09-27 13:28:19.720060373 +0200
-+++ Signal-Desktop-8.28.0/scripts/utils/getBuildCreationTimestamp.mjs	2026-09-27 13:28:28.233632815 +0200
+diff -Naur Signal-Desktop-8.29.0.old/scripts/utils/getBuildCreationTimestamp.mjs Signal-Desktop-8.29.0/scripts/utils/getBuildCreationTimestamp.mjs
+--- Signal-Desktop-8.29.0.old/scripts/utils/getBuildCreationTimestamp.mjs	2026-10-02 12:17:47.250141698 +0200
++++ Signal-Desktop-8.29.0/scripts/utils/getBuildCreationTimestamp.mjs	2026-10-02 12:17:47.510211438 +0200
 @@ -10,7 +10,7 @@
  export function getBuildCreationTimestamp() {
    const unixTimestamp = parseInt(
