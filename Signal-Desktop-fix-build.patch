@@ -1,6 +1,6 @@
-diff -Naur Signal-Desktop-8.33.0.old/package.json Signal-Desktop-8.33.0/package.json
---- Signal-Desktop-8.33.0.old/package.json	2026-10-29 08:26:30.353121363 +0100
-+++ Signal-Desktop-8.33.0/package.json	2026-10-29 08:26:30.457219680 +0100
+diff -Naur Signal-Desktop-8.34.0.old/package.json Signal-Desktop-8.34.0/package.json
+--- Signal-Desktop-8.34.0.old/package.json	2026-11-05 21:49:32.834932050 +0100
++++ Signal-Desktop-8.34.0/package.json	2026-11-05 21:49:32.966593598 +0100
 @@ -103,7 +103,7 @@
      "build:styles:sass:prod": "pnpm run build:styles:sass --style=compressed",
      "build:styles:tailwind:prod": "pnpm run build:styles:tailwind --minify",
@@ -10,9 +10,9 @@ diff -Naur Signal-Desktop-8.33.0.old/package.json Signal-Desktop-8.33.0/package.
      "build:release:mas": "pnpm run build:release --mac mas --universal",
      "build:mas-dev": "bash ./scripts/build-mas-dev.sh",
      "build:release-win32-all": "pnpm run build:release --arm64 --x64",
-diff -Naur Signal-Desktop-8.33.0.old/scripts/utils/getBuildCreationTimestamp.mjs Signal-Desktop-8.33.0/scripts/utils/getBuildCreationTimestamp.mjs
---- Signal-Desktop-8.33.0.old/scripts/utils/getBuildCreationTimestamp.mjs	2026-10-29 08:26:30.362816658 +0100
-+++ Signal-Desktop-8.33.0/scripts/utils/getBuildCreationTimestamp.mjs	2026-10-29 08:26:30.457513814 +0100
+diff -Naur Signal-Desktop-8.34.0.old/scripts/utils/getBuildCreationTimestamp.mjs Signal-Desktop-8.34.0/scripts/utils/getBuildCreationTimestamp.mjs
+--- Signal-Desktop-8.34.0.old/scripts/utils/getBuildCreationTimestamp.mjs	2026-11-05 21:49:32.845848688 +0100
++++ Signal-Desktop-8.34.0/scripts/utils/getBuildCreationTimestamp.mjs	2026-11-05 21:49:32.966945733 +0100
 @@ -10,7 +10,7 @@
  export function getBuildCreationTimestamp() {
    const unixTimestamp = parseInt(
